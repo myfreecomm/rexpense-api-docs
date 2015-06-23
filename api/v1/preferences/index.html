@@ -1,0 +1,215 @@
+---
+layout: default
+title: "User's Preferences"
+---
+<article id="preferences">
+  <section class="description">
+    <h2><a href="#preferences" name="#preferences">User's Preferences</a></h2>
+
+    <p>This section describes the API of the user's preferences. An user can set his preferences
+    and these preferences are: locale and timezone.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>locale:</strong></td>
+          <td><strong>string</strong><br />'en' or 'pt'</td>
+        </tr>
+        <tr>
+          <td><strong>timezone:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mention_name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>default_currency:</strong></td>
+          <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>avatar:</strong></td>
+          <td>
+            <strong>array of object</strong><br />
+            array of styles and URL of the avatar
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_links:</strong></td>
+          <td><strong>array of object</strong><br />array of links of the user's preferences</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example User's Preferences</h4>
+
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "locale": "pt",
+      "timezone": "Brasilia",
+      "mention_name": "JohnFoo",
+      "default_currency": "USD",
+      "avatar": [
+        {
+          "style": "original",
+          "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/original/avatar.png",
+          "width": 716,
+          "height": 655,
+          "expiration": "2014-06-27T20:31:43Z"
+        },
+        {
+          "style": "medium",
+          "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/medium/avatar.png",
+          "width": 300,
+          "height": 300,
+          "expiration": "2014-06-27T20:31:43Z"
+        },
+        {
+          "style": "thumb",
+          "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/thumb/avatar.png",
+          "width": 100,
+          "height": 100,
+          "expiration": "2014-06-27T20:31:43Z"
+        }
+        {
+          "style": "tiny",
+          "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/tiny/avatar.png",
+          "width": 48,
+          "height": 48,
+          "expiration": "2014-06-27T20:31:43Z"
+        }
+      ],
+      "_links": [
+        {
+          "rel": "self",
+          "href": "https://app.rexpense.com/api/v1/preferences",
+          "method": "GET"
+        },
+        {
+          "rel": "update",
+          "href": "https://app.rexpense.com/api/v1/preferences",
+          "method": "PUT"
+        },
+        {
+          "rel": "partial_update",
+          "href": "https://app.rexpense.com/api/v1/preferences",
+          "method": "PATCH"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a href="#show" name="#show">Show preferences</a></h3>
+    <p>Returns the detailed information of the user's preferences.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/preferences</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/preferences \
+       -H 'Accept: application/json' \
+       -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "locale": "pt",
+      ...
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a href="#update" name="#update">Update preferences</a></h3>
+    <p>There are two ways to update the user's preferences: partially or fully.
+      If you'd like to change just one or a few attributes, you have to use the HTTP method <code>PATCH</code>.
+      If you use the HTTP method <code>PUT</code>, you'll have to pass all attributes of the user's preferences.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>locale:</strong></td>
+          <td><strong>string</strong><br />'en' or 'pt'</td>
+        </tr>
+        <tr>
+          <td><strong>timezone:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mention_name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>default_currency:</strong></td>
+          <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_links:</strong></td>
+          <td><strong>array of object</strong><br />array of links of the user's preferences</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>To update the user avatar, you have to send the <code>avatar</code> parameter. This parameter is a JSON object with the following information:</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>file:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_destroy:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The file parameter must be an URL of the avatar.
+    This URL may be achieve following the steps in <a href="{{ site.baseurl }}/api/v1/uploads">Uploads</a> section.</p>
+    <p>To remove the avatar, you have to pass the <code>_destroy</code> parameter with value <code>true</code>.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT/PATCH https://app.rexpense.com/api/v1/preferences</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/preferences \
+       -H 'Accept: application/json' \
+       -H 'Content-type: application/json' \
+       -d '{"locale":"en"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "locale": "en",
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "locale": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>

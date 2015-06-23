@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rexpense API - Expense participants</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygments.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <aside id="main-sidebar">
+  <img id="main-logo" src="/assets/logo.png">
+
+  <h3>API V1</h3>
+
+  <nav>
+    <a href="/api/v1/#summary">Summary</a>
+    <a href="/api/v1/#authentication">Authentication</a>
+    <a href="/api/v1/#requirements">Requirements</a>
+    <a href="/api/v1/#conventions">Conventions</a>
+
+    
+
+    <a href="/api/v1/miscellaneous">Miscellaneous</a>
+    
+  </nav>
+
+  <h3>Resources</h3>
+
+  <nav>
+    <a href="/api/v1/advancements">Advancements</a>
+    
+
+    <a href="/api/v1/advancement_participants">Advancements Participants</a>
+    
+
+    <a href="/api/v1/attachments">Attachments</a>
+    
+
+    <a href="/api/v1/balances">Balances</a>
+    
+
+    <a href="/api/v1/comments">Comments</a>
+    
+
+    <a href="/api/v1/expenses">Expenses</a>
+    
+
+    <a href="/api/v1/expense_participants">Expenses Participants</a>
+    
+      <nav class="subnav">
+        <a href="/api/v1/expense_participants#index">List participants</a>
+        <a href="/api/v1/expense_participants#destroy">Leave a participants list</a>
+      </nav>
+    
+
+    <a href="/api/v1/expense_statuses">Expenses Statuses</a>
+    
+
+    <a href="/api/v1/memberships">Memberships</a>
+    
+
+    <a href="/api/v1/mentionables">Mentionables</a>
+    
+
+    <a href="/api/v1/organizations">Organizations</a>
+    
+
+    <a href="/api/v1/reimbursements">Reimbursements</a>
+    
+
+    <a href="/api/v1/tags">Tags</a>
+    
+
+    <a href="/api/v1/notification_preferences">User's Notifications Preferences</a>
+    
+
+    <a href="/api/v1/preferences">User's Preferences</a>
+    
+
+    <a href="/api/v1/uploads">Uploads</a>
+    
+
+    <a href="/api/v1/webhooks">Webhooks</a>
+    
+  </nav>
+</aside>
+
+    <article id="main-content">
+      <section id="code-content">
+        <article id="participants">
+  <section class="description">
+    <h2><a href="#participant" name="participant">Expense participants</a></h2>
+    <p>An Expense participant list is a group of users who will receive all notification of an Expense.
+      This list contemplates the interested users in the Expense</p>
+    <p>To enter in the list you will have to be responsible for the Expense (changin its status to <code>Analyzing</code>) or
+      be mentioned in Expense comments or comment in an Expense.</p>
+    <p>There is no endpoint to add an user in an Expense participant list. This is done automatically by Rexpense.</p>
+  </section>
+  <section class="code">
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a href="#index" name="index">List participants</a></h3>
+    <p>This endpoint list all participants in an Expense. This list can change according to Expense events.</p>
+    <p>The response uses the User representation shown in <a href="/api/v1/memberships#membership">Memberships section</a>.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses/:id/participants</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses/1/participants \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;participants&quot;</span><span class="o">:</span> <span class="p">[{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;first_name&quot;</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="p">...</span> <span class="p">}]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a href="#destroy" name="destroy">Leave a participant list</a></h3>
+    <p>This endpoint removes the user from an Expense participant list.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/expenses/:id/participants</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/expenses/1/participants \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+  </section>
+</article>
+
+        <footer id="main-footer">
+  <p>This project is maintained by <a href="http://www.myfreecomm.com.br">Myfreecomm</a></p>
+</footer>
+
+      </section>
+    </article>
+    <script src="/javascripts/scale.fix.js"></script>
+  </body>
+</html>

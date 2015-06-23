@@ -1,0 +1,26 @@
+---
+layout: default
+title: "Miscellaneous"
+---
+<article id="miscellaneous">
+  <section class="description">
+    <h2><a href="#miscellaneous">Miscellaneous</a></h2>
+    <p>This section list a set of miscellaneous resources that the Rexpense API supports.</p>
+  </section>
+
+  <section class="code">
+  </section>
+</article>
+
+<article id="emojis">
+  <section class="description">
+    <h3><a href="#emojis">Emojis</a></h3>
+    <p>The list of supported emojis can be found at <a href="http://www.emoji-cheat-sheet.com/" target="_blank">http://www.emoji-cheat-sheet.com/</a>. Another good list with comparison between emojis in different platforms and their native Unicode representation is at <a href="http://apps.timwhitlock.info/emoji/tables/unicode" target="_blank">http://apps.timwhitlock.info/emoji/tables/unicode</a></p>
+    <p>To use a emoji, you have to check if the field supports it in Rexpense. If it does, you just have to pass the code of the emoji, in either simple text form or unicode form. For example, the messages <code>Ok, I'll accept this expense :+1:</code> (using simple text) and <code>Ok, I'll accept this expense 👍</code> (using unicode char, may not be visible depending on your browser) will both be rendered as <code>Ok, I'll accept this expense <img src="{{ site.baseurl }}/assets/emojis/+1.png" width="20" height="20" alt="+1" /></code> on Rexpense.</p>
+  </section>
+
+  <section class="code">
+    <h4>Emoji Restriction</h4>
+    <pre>Only emoji icons are available. Sounds will not be recognized.</pre>
+  </section>
+</article>

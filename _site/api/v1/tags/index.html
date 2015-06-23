@@ -1,0 +1,348 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rexpense API - Tags</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygments.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <aside id="main-sidebar">
+  <img id="main-logo" src="/assets/logo.png">
+
+  <h3>API V1</h3>
+
+  <nav>
+    <a href="/api/v1/#summary">Summary</a>
+    <a href="/api/v1/#authentication">Authentication</a>
+    <a href="/api/v1/#requirements">Requirements</a>
+    <a href="/api/v1/#conventions">Conventions</a>
+
+    
+
+    <a href="/api/v1/miscellaneous">Miscellaneous</a>
+    
+  </nav>
+
+  <h3>Resources</h3>
+
+  <nav>
+    <a href="/api/v1/advancements">Advancements</a>
+    
+
+    <a href="/api/v1/advancement_participants">Advancements Participants</a>
+    
+
+    <a href="/api/v1/attachments">Attachments</a>
+    
+
+    <a href="/api/v1/balances">Balances</a>
+    
+
+    <a href="/api/v1/comments">Comments</a>
+    
+
+    <a href="/api/v1/expenses">Expenses</a>
+    
+
+    <a href="/api/v1/expense_participants">Expenses Participants</a>
+    
+
+    <a href="/api/v1/expense_statuses">Expenses Statuses</a>
+    
+
+    <a href="/api/v1/memberships">Memberships</a>
+    
+
+    <a href="/api/v1/mentionables">Mentionables</a>
+    
+
+    <a href="/api/v1/organizations">Organizations</a>
+    
+
+    <a href="/api/v1/reimbursements">Reimbursements</a>
+    
+
+    <a href="/api/v1/tags">Tags</a>
+    
+      <nav class="subnav">
+        <a href="/api/v1/tags#index">List tags</a>
+        <a href="/api/v1/tags#show">Show a tag</a>
+        <a href="/api/v1/tags#create">Create a tag</a>
+        <a href="/api/v1/tags#update">Update a tag</a>
+        <a href="/api/v1/tags#destroy">Destroy a tag</a>
+      </nav>
+    
+
+    <a href="/api/v1/notification_preferences">User's Notifications Preferences</a>
+    
+
+    <a href="/api/v1/preferences">User's Preferences</a>
+    
+
+    <a href="/api/v1/uploads">Uploads</a>
+    
+
+    <a href="/api/v1/webhooks">Webhooks</a>
+    
+  </nav>
+</aside>
+
+    <article id="main-content">
+      <section id="code-content">
+        <article id="section_explanation">
+  <section class="description">
+    <h2><a name="tags" href="#tags">Tags</a></h2>
+    <p>This section describes the API of the tags resource.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example of Tag</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Restaurant&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-03T14:17:56Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-03T14:17:56Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;_links&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;self&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1/tags&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PUT&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1/tags&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;destroy&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1/tags&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a name="index" href="#index">List tags</a></h3>
+    <p>Retrieve all tags from a specific organization.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>per_page:</strong></td>
+          <td><strong>integer</strong> <em>limit to 100</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/organizations/:id/tags</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/organizations/1/tags \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;current_page&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;total_pages&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="p">...</span> <span class="p">}]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a name="show" href="#show">Show a tag</a></h3>
+    <p>This request shows the tag complete information.</p>
+    <p>To visualize a tag you have to be an Organization's Administrator or Manager.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong> <em>required</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/organizations/:organization_id/tags/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/organizations/1/tags/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 404 Record Not Found</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Record Not Found&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h3><a name="create" href="#create">Create a tag</a></h3>
+    <p>This request creates a new tag.</p>
+    <p>To create a tag you have to be an Organization's Administrator or Manager.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>POST https://app.rexpense.com/api/v1/organization/:organization_id/tags</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/organization/1/tags \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"name":"Restaurant"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a name="update" href="#update">Update a tag</a></h3>
+    <p>This request updates a new tag.</p>
+    <p>To update a tag you have to be an Organization's Administrator or Manager.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/organizations/:organization_id/tags</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/organizations/1/tags/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"name":"Restaurant"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a name="destroy" href="#destroy">Destroy a tag</a></h3>
+    <p>To destroy a tag you have to be an Organization's Administrator or Manager.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/organizations/:organization_id/tags/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/organizations/1/tags/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'
+      </pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+  </section>
+</article>
+
+        <footer id="main-footer">
+  <p>This project is maintained by <a href="http://www.myfreecomm.com.br">Myfreecomm</a></p>
+</footer>
+
+      </section>
+    </article>
+    <script src="/javascripts/scale.fix.js"></script>
+  </body>
+</html>

@@ -1,0 +1,531 @@
+---
+layout: default
+title: "Comments"
+---
+<article id="comment">
+  <section class="description">
+    <h2><a href="#comment" name="#comment">Comments</a></h2>
+    <p>An Expense or an Advancement or a Reimbursement can have several comments, which belongs to an user and has a content.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>content:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>user:</strong></td>
+          <td><strong>user object representation</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="code">
+    <h4>Example Comment</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "content": "Foo bar comment",
+      "created_at": "2014-10-10T14:17:56Z",
+      "updated_at": "2014-10-10T14:17:56Z",
+      "user": {
+        "id": 1,
+        "first_name": "John",
+        "last_name": "",
+        "emails": [
+          {
+            "email": "email@rexpense.com",
+            "main": true
+          }
+        ],
+        "avatar": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/original/avatar.png",
+            "width": 716,
+            "height": 655,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/medium/avatar.png",
+            "width": 300,
+            "height": 300,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/thumb/avatar.png",
+            "width": 100,
+            "height": 100,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/tiny/avatar.png",
+            "width": 48,
+            "height": 48,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "mentioned_users": [
+        {
+          "name": "John Foo",
+          "email": "john@example.com",
+          "mention_name": "JohnFoo",
+          "avatar": [
+            {
+              "style": "original",
+              "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/2/original/avatar.png",
+              "width": 716,
+              "height": 655,
+              "expiration": "2014-06-27T20:31:43Z"
+            },
+            {
+              "style": "medium",
+              "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/2/medium/avatar.png",
+              "width": 300,
+              "height": 300,
+              "expiration": "2014-06-27T20:31:43Z"
+            },
+            {
+              "style": "thumb",
+              "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/2/thumb/avatar.png",
+              "width": 100,
+              "height": 100,
+              "expiration": "2014-06-27T20:31:43Z"
+            }
+            {
+              "style": "tiny",
+              "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/2/tiny/avatar.png",
+              "width": 48,
+              "height": 48,
+              "expiration": "2014-06-27T20:31:43Z"
+            }
+          ]
+        }
+      ],
+      "_links": [
+        {
+          "rel": "self",
+          "method": "GET",
+          "href": "https://app.rexpense.com/api/v1/expenses/1/comments/1"
+        },
+        {
+          "rel": "update",
+          "method": "PUT",
+          "href": "https://app.rexpense.com/api/v1/expenses/1/comments/1"
+        },
+        {
+          "rel": "destroy",
+          "method": "DELETE",
+          "href": "https://app.rexpense.com/api/v1/expenses/1/comments/1"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a href="#index" name="#index">List all comments</a></h3>
+    <p>Retrieve the list of comments of an Expense or an Advancement or a Reimbursement.
+      It will return a JSON containing the name of the resource with an array of the objects requested using the comment representation and informations like the total of objects, current page and total pages.</p>
+    <p>If the <code>content</code> of the comments have emojis, they will be rendered as text code by default (for example, <code>:smile:</code>). However, if you'd like to get the unicode of the emojis instead, you should supply a <code>emoji_in_unicode</code> boolean param.
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>per_page:</strong></td>
+          <td><strong>integer</strong> <em>limit to 100</em></td>
+        </tr>
+        <tr>
+            <td><strong>emoji_in_unicode:</strong></td>
+            <td><strong>boolean</strong></td>
+          </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses/:expense_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses/1/comments \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "comments": [
+        {
+          "id": 1,
+          "content": "My first comment"
+          ...
+        }
+      ]
+    }
+    {% endhighlight %}
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/advancements/:advancement_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements/1/comments \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "comments": [
+        {
+          "id": 1,
+          "content": "My first comment"
+          ...
+        }
+      ]
+    }
+    {% endhighlight %}
+    <h4>Definition (comment of a Reimbursement)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/reimbursements/1/comments \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "comments": [
+        {
+          "id": 1,
+          "content": "My first comment"
+          ...
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a href="#show" name="#show">Show a comment</a></h3>
+    <p>Retrieve a specific comment of an Expense, an Advancement or a Reimbursement. Returns a detailed representation of the comment.</p>
+    <p>If the <code>content</code> of the comments have emojis, they will be rendered as text code by default (for example, <code>:smile:</code>). However, if you'd like to get the unicode of the emojis instead, you should supply a <code>emoji_in_unicode</code> boolean param.
+    <h4>Parameter</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>emoji_in_unicode:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>If the Expense or Advancement or Reimbursement is deleted, the request will return a <code>410 Gone</code> HTTP status with an empty body.</p>
+  </section>
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses/:expense_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses/1/comments/1 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "content": "My first comment",
+      ...
+    }
+    {% endhighlight %}
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/advancements/:advancement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements/1/comments/1 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "content": "My first comment",
+      ...
+    }
+    {% endhighlight %}
+    <h4>Definition (comment of a Reimbursement)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/reimbursements/1/comments/1 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "content": "My first comment",
+      ...
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h3><a name="create" href="#create">Create a comment</a></h3>
+    <p>This request creates a new comment.</p>
+
+    <h4>Parameter</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>content:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><code>Content</code> field has support for Emojis. To know more about it, please visit
+      <a href="{{ site.baseurl }}/api/v1/miscellaneous#emojis">Emoji section</a>.</p>
+    <p>You can provide emojis in two forms: as text code (<code>:+1:</code>, for example) or unicode.</p>
+
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>POST https://app.rexpense.com/api/v1/expenses/:expense_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/expenses/1/comments \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"content": "My second comment"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    {% highlight javascript %}
+    {
+      "id": 2,
+      "content": "My second comment",
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "content": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>POST https://app.rexpense.com/api/v1/advancements/:advancement_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/advancements/1/comments \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"content": "My second comment"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    {% highlight javascript %}
+    {
+      "id": 2,
+      "content": "My second comment",
+      ...
+    }
+    {% endhighlight %}
+    <h4>Definition (comment of a Reimbursement)</h4>
+    <pre>POST https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/reimbursements/1/comments \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"content": "My second comment"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    {% highlight javascript %}
+    {
+      "id": 2,
+      "content": "My second comment",
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "content": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a href="#update" name="#update">Update a comment</a></h3>
+    <p>Updates a comment of an Expense or an Advancement or a Reimbursement. Returns a detailed representation of the comment updated.</p>
+    <h4>Parameter</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>content:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><code>Content</code> field has support for Emojis. To know more about it, please visit
+      <a href="{{ site.baseurl }}/api/v1/miscellaneous#emojis">Emoji section</a>.</p>
+    <p>You can provide emojis in two forms: as text code (<code>:+1:</code>, for example) or unicode.</p>
+
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/expenses/:expense_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PUT https://app.rexpense.com/api/v1/expenses/1/comments/2 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"content":"My updated comment"}'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 2,
+      "content": "My updated comment",
+      ...
+    }
+    {% endhighlight %}
+    <h4>Example Response Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "content": ["can' be blank"]
+      }
+    }
+    {% endhighlight %}
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/advancements/:advancement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PUT https://app.rexpense.com/api/v1/advancements/1/comments/2 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"content":"My updated comment"}'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 2,
+      "content": "My updated comment",
+      ...
+    }
+    {% endhighlight %}
+    <h4>Definition (comment of an Reimbursement)</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PUT https://app.rexpense.com/api/v1/reimbursements/1/comments/2 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"content":"My updated comment"}'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 2,
+      "content": "My updated comment",
+      ...
+    }
+    {% endhighlight %}
+    <h4>Example Response Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "content": ["can' be blank"]
+      }
+    }
+    {% endhighlight %}
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a href="#destroy" name="#destroy">Remove a comment</a></h3>
+    <p>Destroy a comment of an Axpense or an Advancement or a Reimbursement.</p>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/expenses/:expense_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/expenses/:expense_id/comments/:id \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/advancements/:advancement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/advancements/:advancement_id/comments/:id \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+
+    <h4>Definition (comment of an Reimbursement)</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments/:id \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>

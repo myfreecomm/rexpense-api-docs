@@ -1,0 +1,635 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rexpense API - Comments</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygments.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <aside id="main-sidebar">
+  <img id="main-logo" src="/assets/logo.png">
+
+  <h3>API V1</h3>
+
+  <nav>
+    <a href="/api/v1/#summary">Summary</a>
+    <a href="/api/v1/#authentication">Authentication</a>
+    <a href="/api/v1/#requirements">Requirements</a>
+    <a href="/api/v1/#conventions">Conventions</a>
+
+    
+
+    <a href="/api/v1/miscellaneous">Miscellaneous</a>
+    
+  </nav>
+
+  <h3>Resources</h3>
+
+  <nav>
+    <a href="/api/v1/advancements">Advancements</a>
+    
+
+    <a href="/api/v1/advancement_participants">Advancements Participants</a>
+    
+
+    <a href="/api/v1/attachments">Attachments</a>
+    
+
+    <a href="/api/v1/balances">Balances</a>
+    
+
+    <a href="/api/v1/comments">Comments</a>
+    
+      <nav class="subnav">
+        <a href="/api/v1/comments#index">List comments</a>
+        <a href="/api/v1/comments#show">Show a comment</a>
+        <a href="/api/v1/comments#create">Create a comment</a>
+        <a href="/api/v1/comments#update">Update a comment</a>
+        <a href="/api/v1/comments#destroy">Destroy a comment</a>
+      </nav>
+    
+
+    <a href="/api/v1/expenses">Expenses</a>
+    
+
+    <a href="/api/v1/expense_participants">Expenses Participants</a>
+    
+
+    <a href="/api/v1/expense_statuses">Expenses Statuses</a>
+    
+
+    <a href="/api/v1/memberships">Memberships</a>
+    
+
+    <a href="/api/v1/mentionables">Mentionables</a>
+    
+
+    <a href="/api/v1/organizations">Organizations</a>
+    
+
+    <a href="/api/v1/reimbursements">Reimbursements</a>
+    
+
+    <a href="/api/v1/tags">Tags</a>
+    
+
+    <a href="/api/v1/notification_preferences">User's Notifications Preferences</a>
+    
+
+    <a href="/api/v1/preferences">User's Preferences</a>
+    
+
+    <a href="/api/v1/uploads">Uploads</a>
+    
+
+    <a href="/api/v1/webhooks">Webhooks</a>
+    
+  </nav>
+</aside>
+
+    <article id="main-content">
+      <section id="code-content">
+        <article id="comment">
+  <section class="description">
+    <h2><a href="#comment" name="#comment">Comments</a></h2>
+    <p>An Expense or an Advancement or a Reimbursement can have several comments, which belongs to an user and has a content.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>content:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>user:</strong></td>
+          <td><strong>user object representation</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="code">
+    <h4>Example Comment</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;Foo bar comment&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-10-10T14:17:56Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-10-10T14:17:56Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;first_name&quot;</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_name&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;emails&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="s2">&quot;email@rexpense.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="kc">true</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;avatar&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;original&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/original/avatar.png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">716</span><span class="p">,</span>
+            <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">655</span><span class="p">,</span>
+            <span class="s2">&quot;expiration&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-27T20:31:43Z&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/medium/avatar.png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+            <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+            <span class="s2">&quot;expiration&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-27T20:31:43Z&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;thumb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/thumb/avatar.png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;expiration&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-27T20:31:43Z&quot;</span>
+          <span class="p">}</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;tiny&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/tiny/avatar.png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+            <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+            <span class="s2">&quot;expiration&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-27T20:31:43Z&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;mentioned_users&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;John Foo&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="s2">&quot;john@example.com&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;mention_name&quot;</span><span class="o">:</span> <span class="s2">&quot;JohnFoo&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;avatar&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;original&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://rexpense-uploads.s3.amazonaws.com/user_avatar/2/original/avatar.png&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">716</span><span class="p">,</span>
+              <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">655</span><span class="p">,</span>
+              <span class="s2">&quot;expiration&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-27T20:31:43Z&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://rexpense-uploads.s3.amazonaws.com/user_avatar/2/medium/avatar.png&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+              <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+              <span class="s2">&quot;expiration&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-27T20:31:43Z&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;thumb&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://rexpense-uploads.s3.amazonaws.com/user_avatar/2/thumb/avatar.png&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+              <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+              <span class="s2">&quot;expiration&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-27T20:31:43Z&quot;</span>
+            <span class="p">}</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;tiny&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://rexpense-uploads.s3.amazonaws.com/user_avatar/2/tiny/avatar.png&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+              <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+              <span class="s2">&quot;expiration&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-27T20:31:43Z&quot;</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;_links&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;self&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/expenses/1/comments/1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PUT&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/expenses/1/comments/1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;destroy&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/expenses/1/comments/1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a href="#index" name="#index">List all comments</a></h3>
+    <p>Retrieve the list of comments of an Expense or an Advancement or a Reimbursement.
+      It will return a JSON containing the name of the resource with an array of the objects requested using the comment representation and informations like the total of objects, current page and total pages.</p>
+    <p>If the <code>content</code> of the comments have emojis, they will be rendered as text code by default (for example, <code>:smile:</code>). However, if you'd like to get the unicode of the emojis instead, you should supply a <code>emoji_in_unicode</code> boolean param.
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>per_page:</strong></td>
+          <td><strong>integer</strong> <em>limit to 100</em></td>
+        </tr>
+        <tr>
+            <td><strong>emoji_in_unicode:</strong></td>
+            <td><strong>boolean</strong></td>
+          </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses/:expense_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses/1/comments \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;current_page&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;total_pages&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;comments&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My first comment&quot;</span>
+          <span class="p">...</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/advancements/:advancement_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements/1/comments \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;current_page&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;total_pages&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;comments&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My first comment&quot;</span>
+          <span class="p">...</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Definition (comment of a Reimbursement)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/reimbursements/1/comments \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;current_page&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;total_pages&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;comments&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My first comment&quot;</span>
+          <span class="p">...</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a href="#show" name="#show">Show a comment</a></h3>
+    <p>Retrieve a specific comment of an Expense, an Advancement or a Reimbursement. Returns a detailed representation of the comment.</p>
+    <p>If the <code>content</code> of the comments have emojis, they will be rendered as text code by default (for example, <code>:smile:</code>). However, if you'd like to get the unicode of the emojis instead, you should supply a <code>emoji_in_unicode</code> boolean param.
+    <h4>Parameter</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>emoji_in_unicode:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>If the Expense or Advancement or Reimbursement is deleted, the request will return a <code>410 Gone</code> HTTP status with an empty body.</p>
+  </section>
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses/:expense_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses/1/comments/1 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My first comment&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/advancements/:advancement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements/1/comments/1 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My first comment&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Definition (comment of a Reimbursement)</h4>
+    <pre>GET https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/reimbursements/1/comments/1 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My first comment&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h3><a name="create" href="#create">Create a comment</a></h3>
+    <p>This request creates a new comment.</p>
+
+    <h4>Parameter</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>content:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><code>Content</code> field has support for Emojis. To know more about it, please visit
+      <a href="/api/v1/miscellaneous#emojis">Emoji section</a>.</p>
+    <p>You can provide emojis in two forms: as text code (<code>:+1:</code>, for example) or unicode.</p>
+
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>POST https://app.rexpense.com/api/v1/expenses/:expense_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/expenses/1/comments \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"content": "My second comment"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My second comment&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>POST https://app.rexpense.com/api/v1/advancements/:advancement_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/advancements/1/comments \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"content": "My second comment"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My second comment&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Definition (comment of a Reimbursement)</h4>
+    <pre>POST https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/reimbursements/1/comments \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"content": "My second comment"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My second comment&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;This organization is expired and in read-only mode until this situation have been solved.&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a href="#update" name="#update">Update a comment</a></h3>
+    <p>Updates a comment of an Expense or an Advancement or a Reimbursement. Returns a detailed representation of the comment updated.</p>
+    <h4>Parameter</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>content:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><code>Content</code> field has support for Emojis. To know more about it, please visit
+      <a href="/api/v1/miscellaneous#emojis">Emoji section</a>.</p>
+    <p>You can provide emojis in two forms: as text code (<code>:+1:</code>, for example) or unicode.</p>
+
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/expenses/:expense_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PUT https://app.rexpense.com/api/v1/expenses/1/comments/2 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"content":"My updated comment"}'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My updated comment&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Example Response Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;can&#39; be blank&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/advancements/:advancement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PUT https://app.rexpense.com/api/v1/advancements/1/comments/2 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"content":"My updated comment"}'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My updated comment&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Definition (comment of an Reimbursement)</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PUT https://app.rexpense.com/api/v1/reimbursements/1/comments/2 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"content":"My updated comment"}'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="s2">&quot;My updated comment&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Example Response Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;can&#39; be blank&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;This organization is expired and in read-only mode until this situation have been solved.&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a href="#destroy" name="#destroy">Remove a comment</a></h3>
+    <p>Destroy a comment of an Axpense or an Advancement or a Reimbursement.</p>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+  <section class="code">
+    <h4>Definition (comment of an Expense)</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/expenses/:expense_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/expenses/:expense_id/comments/:id \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+
+    <h4>Definition (comment of an Advancement)</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/advancements/:advancement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/advancements/:advancement_id/comments/:id \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+
+    <h4>Definition (comment of an Reimbursement)</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/reimbursements/:reimbursement_id/comments/:id \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;This organization is expired and in read-only mode until this situation have been solved.&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+        <footer id="main-footer">
+  <p>This project is maintained by <a href="http://www.myfreecomm.com.br">Myfreecomm</a></p>
+</footer>
+
+      </section>
+    </article>
+    <script src="/javascripts/scale.fix.js"></script>
+  </body>
+</html>

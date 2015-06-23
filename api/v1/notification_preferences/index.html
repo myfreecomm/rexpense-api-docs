@@ -1,0 +1,430 @@
+---
+layout: default
+title: "User's Notifications Preferences"
+---
+<article id="preferences">
+  <section class="description">
+    <h2><a href="#preferences" name="#preferences">User's Notifications preferences</a></h2>
+
+    <p>This section describes the API of the user's notifications preferences. An user can set his notifications preferences according to an event in Rexpense.
+    These events are listed bellow:</p>
+
+    <h4>Email notifications attributes</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>email_on_expense_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>email_on_expense_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_expense_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_expense_status_changed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_attachment_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_attachment_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_comment_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_comment_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_comment_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_organization_add_member:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_organization_remove_member:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_organization_left:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_organization_role_changed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_advancement_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_advancement_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_advancement_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_reimbursement_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_reimbursement_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_reimbursement_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Mobile notifications attributes</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>mobile_on_expense_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>mobile_on_expense_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_expense_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_expense_status_changed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_attachment_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_attachment_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_comment_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_comment_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_comment_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_organization_add_member:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_organization_remove_member:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_organization_left:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_organization_role_changed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_advancement_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_advancement_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_advancement_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_reimbursement_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_reimbursement_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_reimbursement_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example User's Notifications</h4>
+
+    {% highlight javascript %}
+    {
+      "user": {
+        "id": 1,
+        "locale": "pt",
+        "timezone": "Brasilia",
+        "mention_name": "JohnFoo",
+        "default_currency": "USD",
+        "avatar": [],
+        "_links": [
+          {
+            "rel": "self",
+            "href": "https://app.rexpense.com/api/v1/preferences",
+            "method": "GET"
+          },
+          {
+            "rel": "update",
+            "href": "https://app.rexpense.com/api/v1/preferences",
+            "method": "PUT"
+          },
+          {
+            "rel": "partial_update",
+            "href": "https://app.rexpense.com/api/v1/preferences",
+            "method": "PATCH"
+          }
+        ]
+      },
+      "email_on_expense_created": true,
+      "email_on_expense_updated": true,
+      "email_on_expense_destroyed": true,
+      "email_on_attachment_created": true,
+      "email_on_attachment_destroyed": true,
+      "email_on_comment_created": true,
+      "email_on_comment_updated": true,
+      "email_on_comment_destroyed": true,
+      "email_on_organization_add_member": true,
+      "email_on_organization_left": true,
+      "email_on_organization_remove_member": true,
+      "email_on_organization_role_changed": true,
+      "email_on_advancement_created": true,
+      "email_on_advancement_updated": true,
+      "email_on_advancement_destroyed": true,
+      "email_on_reimbursement_created": true,
+      "email_on_reimbursement_updated": true,
+      "email_on_reimbursement_destroyed": true,
+      "mobile_on_expense_created": true,
+      "mobile_on_expense_updated": true,
+      "mobile_on_expense_destroyed": true,
+      "mobile_on_attachment_created": true,
+      "mobile_on_attachment_destroyed": true,
+      "mobile_on_comment_created": true,
+      "mobile_on_comment_updated": true,
+      "mobile_on_comment_destroyed": true,
+      "mobile_on_organization_add_member": true,
+      "mobile_on_organization_left": true,
+      "mobile_on_organization_remove_member": true,
+      "mobile_on_organization_role_changed": true,
+      "mobile_on_advancement_created": true,
+      "mobile_on_advancement_updated": true,
+      "mobile_on_advancement_destroyed": true,
+      "mobile_on_reimbursement_created": true,
+      "mobile_on_reimbursement_updated": true,
+      "mobile_on_reimbursement_destroyed": true,
+      "_links": [
+        {
+          "rel": "self",
+          "href": "https://app.rexpense.com/api/v1/notifications",
+          "method": "GET"
+        },
+        {
+          "rel": "update",
+          "href": "https://app.rexpense.com/api/v1/notifications",
+          "method": "PUT"
+        },
+        {
+          "rel": "partial_update",
+          "href": "https://app.rexpense.com/api/v1/notifications",
+          "method": "PATCH"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a href="#show" name="#show">Show notifications preferences</a></h3>
+    <p>Returns the detailed information of the user's notifications preferences.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/notification_preferences</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/notification_preferences \
+       -H 'Accept: application/json' \
+       -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "user": {
+        ...
+      },
+      "email_on_expense_created": true,
+      ...
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a href="#update" name="#update">Update notifications preferences</a></h3>
+    <p>There are two ways to update the user's notifications: partially or fully.
+      If you'd like to change just one or a few attributes, you have to use the HTTP method <code>PATCH</code>.
+      If you use the HTTP method <code>PUT</code>, you'll have to pass all attributes of the user's notifications preferences.</p>
+
+    <h4>Parameters</h4>
+    <p>Possible parameters are describe in the section <a href="{{ site.baseurl }}/api/v1/notification_preferences">above</a>.
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT/PATCH https://app.rexpense.com/api/v1/notification_preferences</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/notification_preferences \
+       -H 'Accept: application/json' \
+       -H 'Content-type: application/json' \
+       -d '{"locale":"en"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "user": {
+        ...
+      },
+      "email_on_expense_created": true,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "email_on_expense_created": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="descriptions">
+  <section class="description">
+    <h3><a href="#descriptions" name="#descriptions">Describe notifications preferences</a></h3>
+    <p>Returns the names and description of the user's notifications.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/notification_preferences/descriptions</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/notification_preferences/descriptions \
+       -H 'Accept: application/json' \
+       -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    [
+      {
+        "names": ["email_on_expense_status_changed", "mobile_on_expense_status_changed"],
+        "description": "The status of an expense was updated",
+      },
+      {
+        "names": ["email_on_expense_created", "mobile_on_expense_created"]
+        "description": "A new expense was created"
+      },
+      {
+        "names": ["email_on_expense_updated", "mobile_on_expense_updated"],
+        "description": "An expense was updated"
+      },
+      {
+        "names": ["email_on_expense_destroyed", "mobile_on_expense_destroyed"],
+        "description": "An expense was deleted"
+      },
+      {
+        "names": ["email_on_attachment_created", "mobile_on_attachment_created"],
+        "description": "A new attachment was added in the expense"
+      },
+      {
+        "names": ["email_on_attachment_destroyed", "mobile_on_attachment_destroyed"],
+        "description": "An attachment was deleted from an expense"
+      },
+      {
+        "names": ["email_on_comment_created", "mobile_on_comment_created"],
+        "description": "A comment was added in an expense"
+      },
+      {
+        "names": ["email_on_comment_updated", "mobile_on_comment_updated"],
+        "description": "A comment was updated"
+      },
+      {
+        "names": ["email_on_comment_destroyed", "mobile_on_comment_destroyed"],
+        "description": "A comment was deleted"
+      },
+      {
+        "names": ["email_on_organization_add_member", "mobile_on_organization_add_member"],
+        "description": "A new member was added to an organization"
+      },
+      {
+        "names": ["email_on_organization_left", "mobile_on_organization_left"],
+        "description": "A member left the organization",
+      },
+      {
+        "names": ["email_on_organization_remove_member", "mobile_on_organization_remove_member"],
+        "description": "A member was deleted from an organization"
+      },
+      {
+        "names": ["email_on_organization_role_changed", "mobile_on_organization_role_changed"],
+        "description": "A member has its role modified in the organization"
+      },
+      {
+        "names": ["email_on_advancement_created", "mobile_on_advancement_created"],
+        "description": "A new advancement was created"
+      },
+      {
+        "names": ["email_on_advancement_updated", "mobile_on_advancement_updated"],
+        "description": "An advancement was updated"
+      },
+      {
+        "names": ["email_on_advancement_destroyed", "mobile_on_advancement_destroyed"],
+        "description": "An advancement was deleted"
+      },
+      {
+        "names": ["email_on_reimbursement_created", "mobile_on_reimbursement_created"],
+        "description": "A new reimbursement was created"
+      },
+      {
+        "names": ["email_on_reimbursement_updated", "mobile_on_reimbursement_updated"],
+        "description": "A reimbursement was updated"
+      },
+      {
+        "names": ["email_on_reimbursement_destroyed", "mobile_on_reimbursement_destroyed"],
+        "description": "A reimbursement was deleted"
+      }
+    ]
+    {% endhighlight %}
+  </section>
+</article>

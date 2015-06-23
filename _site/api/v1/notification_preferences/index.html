@@ -1,0 +1,532 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rexpense API - User's Notifications Preferences</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygments.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <aside id="main-sidebar">
+  <img id="main-logo" src="/assets/logo.png">
+
+  <h3>API V1</h3>
+
+  <nav>
+    <a href="/api/v1/#summary">Summary</a>
+    <a href="/api/v1/#authentication">Authentication</a>
+    <a href="/api/v1/#requirements">Requirements</a>
+    <a href="/api/v1/#conventions">Conventions</a>
+
+    
+
+    <a href="/api/v1/miscellaneous">Miscellaneous</a>
+    
+  </nav>
+
+  <h3>Resources</h3>
+
+  <nav>
+    <a href="/api/v1/advancements">Advancements</a>
+    
+
+    <a href="/api/v1/advancement_participants">Advancements Participants</a>
+    
+
+    <a href="/api/v1/attachments">Attachments</a>
+    
+
+    <a href="/api/v1/balances">Balances</a>
+    
+
+    <a href="/api/v1/comments">Comments</a>
+    
+
+    <a href="/api/v1/expenses">Expenses</a>
+    
+
+    <a href="/api/v1/expense_participants">Expenses Participants</a>
+    
+
+    <a href="/api/v1/expense_statuses">Expenses Statuses</a>
+    
+
+    <a href="/api/v1/memberships">Memberships</a>
+    
+
+    <a href="/api/v1/mentionables">Mentionables</a>
+    
+
+    <a href="/api/v1/organizations">Organizations</a>
+    
+
+    <a href="/api/v1/reimbursements">Reimbursements</a>
+    
+
+    <a href="/api/v1/tags">Tags</a>
+    
+
+    <a href="/api/v1/notification_preferences">User's Notifications Preferences</a>
+    
+      <nav class="subnav">
+        <a href="/api/v1/notification_preferences#show">Show notifications preferences</a>
+        <a href="/api/v1/notification_preferences#update">Update notifications preferences</a>
+        <a href="/api/v1/notification_preferences#descriptions">Describe notifications preferences</a>
+      </nav>
+    
+
+    <a href="/api/v1/preferences">User's Preferences</a>
+    
+
+    <a href="/api/v1/uploads">Uploads</a>
+    
+
+    <a href="/api/v1/webhooks">Webhooks</a>
+    
+  </nav>
+</aside>
+
+    <article id="main-content">
+      <section id="code-content">
+        <article id="preferences">
+  <section class="description">
+    <h2><a href="#preferences" name="#preferences">User's Notifications preferences</a></h2>
+
+    <p>This section describes the API of the user's notifications preferences. An user can set his notifications preferences according to an event in Rexpense.
+    These events are listed bellow:</p>
+
+    <h4>Email notifications attributes</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>email_on_expense_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>email_on_expense_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_expense_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_expense_status_changed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_attachment_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_attachment_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_comment_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_comment_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_comment_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_organization_add_member:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_organization_remove_member:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_organization_left:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_organization_role_changed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_advancement_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_advancement_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_advancement_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_reimbursement_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_reimbursement_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_reimbursement_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Mobile notifications attributes</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>mobile_on_expense_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>mobile_on_expense_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_expense_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_expense_status_changed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_attachment_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_attachment_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_comment_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_comment_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>email_on_comment_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_organization_add_member:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_organization_remove_member:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_organization_left:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_organization_role_changed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_advancement_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_advancement_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_advancement_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_reimbursement_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_reimbursement_updated:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>mobile_on_reimbursement_destroyed:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example User's Notifications</h4>
+
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;pt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;timezone&quot;</span><span class="o">:</span> <span class="s2">&quot;Brasilia&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mention_name&quot;</span><span class="o">:</span> <span class="s2">&quot;JohnFoo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default_currency&quot;</span><span class="o">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;avatar&quot;</span><span class="o">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;_links&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;self&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/preferences&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/preferences&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PUT&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;partial_update&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/preferences&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PATCH&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;email_on_expense_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_expense_updated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_expense_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_attachment_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_attachment_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_comment_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_comment_updated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_comment_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_organization_add_member&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_organization_left&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_organization_remove_member&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_organization_role_changed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_advancement_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_advancement_updated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_advancement_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_reimbursement_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_reimbursement_updated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;email_on_reimbursement_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_expense_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_expense_updated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_expense_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_attachment_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_attachment_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_comment_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_comment_updated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_comment_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_organization_add_member&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_organization_left&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_organization_remove_member&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_organization_role_changed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_advancement_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_advancement_updated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_advancement_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_reimbursement_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_reimbursement_updated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;mobile_on_reimbursement_destroyed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;_links&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;self&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/notifications&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/notifications&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PUT&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;partial_update&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/notifications&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PATCH&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a href="#show" name="#show">Show notifications preferences</a></h3>
+    <p>Returns the detailed information of the user's notifications preferences.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/notification_preferences</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/notification_preferences \
+       -H 'Accept: application/json' \
+       -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;email_on_expense_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a href="#update" name="#update">Update notifications preferences</a></h3>
+    <p>There are two ways to update the user's notifications: partially or fully.
+      If you'd like to change just one or a few attributes, you have to use the HTTP method <code>PATCH</code>.
+      If you use the HTTP method <code>PUT</code>, you'll have to pass all attributes of the user's notifications preferences.</p>
+
+    <h4>Parameters</h4>
+    <p>Possible parameters are describe in the section <a href="/api/v1/notification_preferences">above</a>.
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT/PATCH https://app.rexpense.com/api/v1/notification_preferences</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/notification_preferences \
+       -H 'Accept: application/json' \
+       -H 'Content-type: application/json' \
+       -d '{"locale":"en"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;email_on_expense_created&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;email_on_expense_created&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;can&#39;t be blank&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="descriptions">
+  <section class="description">
+    <h3><a href="#descriptions" name="#descriptions">Describe notifications preferences</a></h3>
+    <p>Returns the names and description of the user's notifications.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/notification_preferences/descriptions</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/notification_preferences/descriptions \
+       -H 'Accept: application/json' \
+       -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_expense_status_changed&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_expense_status_changed&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The status of an expense was updated&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_expense_created&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_expense_created&quot;</span><span class="p">]</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A new expense was created&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_expense_updated&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_expense_updated&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;An expense was updated&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_expense_destroyed&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_expense_destroyed&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;An expense was deleted&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_attachment_created&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_attachment_created&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A new attachment was added in the expense&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_attachment_destroyed&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_attachment_destroyed&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;An attachment was deleted from an expense&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_comment_created&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_comment_created&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A comment was added in an expense&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_comment_updated&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_comment_updated&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A comment was updated&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_comment_destroyed&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_comment_destroyed&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A comment was deleted&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_organization_add_member&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_organization_add_member&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A new member was added to an organization&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_organization_left&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_organization_left&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A member left the organization&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_organization_remove_member&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_organization_remove_member&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A member was deleted from an organization&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_organization_role_changed&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_organization_role_changed&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A member has its role modified in the organization&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_advancement_created&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_advancement_created&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A new advancement was created&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_advancement_updated&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_advancement_updated&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;An advancement was updated&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_advancement_destroyed&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_advancement_destroyed&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;An advancement was deleted&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_reimbursement_created&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_reimbursement_created&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A new reimbursement was created&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_reimbursement_updated&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_reimbursement_updated&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A reimbursement was updated&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;email_on_reimbursement_destroyed&quot;</span><span class="p">,</span> <span class="s2">&quot;mobile_on_reimbursement_destroyed&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A reimbursement was deleted&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+        <footer id="main-footer">
+  <p>This project is maintained by <a href="http://www.myfreecomm.com.br">Myfreecomm</a></p>
+</footer>
+
+      </section>
+    </article>
+    <script src="/javascripts/scale.fix.js"></script>
+  </body>
+</html>

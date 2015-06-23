@@ -1,0 +1,156 @@
+---
+layout: default
+title: "Expense statuses"
+---
+<article id="expense_status">
+  <section class="description">
+    <h2><a name="expense_status" href="#expense_status">Expense statuses</a></h2>
+    <p>This section describes how to handle and update the expense status. There are six possible statuses
+    for an expense: </p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>awaiting_analysis</strong></td>
+          <td valign="top">
+            <div style="background-color:#FFFFFF; color:#A2A2A2;padding:5px">
+              <strong>#FFFFFF</strong>
+            </div>
+          </td>
+          <td>no manager or admin has analyzed the expense yet</td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>analyzing</strong></td>
+          <td valign="top">
+            <div style="background-color:#A2A2A2; color:#FFFFFF; padding:5px">
+              <strong>#A2A2A2</strong>
+            </div>
+          </td>
+          <td>a manager or an admin has analyzed the expense</td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>pending</strong></td>
+          <td valign="top">
+            <div style="background-color:#FF9B00; color:#FFFFFF; padding:5px">
+              <strong>#FF9B00</strong>
+            </div>
+          </td>
+          <td>there is some information missing in the expense, so the receiver has to complete it</td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>approved</strong></td>
+          <td valign="top">
+            <div style="background-color:#52A954; color:#FFFFFF; padding:5px">
+              <strong>#52A954</strong>
+            </div>
+          </td>
+          <td>a manager or an admin has approved the expense</td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>paid</strong></td>
+          <td valign="top">
+            <div style="background-color:#529ECC; color:#FFFFFF; padding:5px">
+              <strong>#529ECC</strong>
+            </div>
+          </td>
+          <td>the expense has been paid, the receiver received the approved amount</td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>rejected</strong></td>
+          <td valign="top">
+            <div style="background-color:#D95E40; color:#FFFFFF; padding:5px">
+              <strong>#D95E40</strong>
+            </div>
+          </td>
+          <td>a manager or an admin has rejected the expense</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+  <h3><a name="show" href="#show">Show statuses</a></h3>
+  <p>List all possible statuses that an expense can change to.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses/:id/status</pre>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses/1/status \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "status": [
+        {
+          "slug": "approved",
+          "name": "Approved",
+          "background_color": "#52A954",
+          "text_color": "#FFFFFF"
+        },
+        {
+          "slug": "rejected",
+          "name": "Rejected",
+          "background_color": "#D95E40",
+          "text_color": "#FFFFFF"
+        },
+        {
+          "slug": "awaiting_analysis",
+          "name": "Awaiting Analysis",
+          "background_color": "#FFFFFF",
+          "text_color": "#A2A2A2"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+  <h3><a name="show" href="#show">Update status</a></h3>
+  <p>To update an expense status you have to provide the <code>status</code> parameter containing one of the possible
+  status to change. Besides, if the status is <code>approved</code> or <code>paid</code> (only if the status the expense changed from is <code>awaiting_analysis</code>) you have to supply the <code>approved_amount</code>.</p>
+  <h4>Parameters</h4>
+  <table class="parameters">
+    <tbody>
+      <tr>
+        <td valign="top"><strong>status</strong></td>
+        <td><strong>string</strong> <em>required</em><br />'awaiting_analysis', 'analyzing', 'pending', 'approved', 'paid' or 'rejected</td>
+      </tr>
+      <tr>
+        <td valign="top"><strong>approved_amount</strong></td>
+        <td><strong>float</strong><br />this field is required only if the status is equals to <em>approved</em> or <em>paid</em></td>
+      </tr>
+      <tr>
+        <td valign="top"><strong>approved_amount_currency</strong></td>
+        <td><strong>string</strong><br />this field is required only if the status is equals to <em>approved</em> or <em>paid</em><br />based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a><br />default: 'BRL'</td>
+      </tr>
+    </tbody>
+  </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/expenses/:id/status</pre>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PUT https://app.rexpense.com/api/v1/expenses/1/status \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "status": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>

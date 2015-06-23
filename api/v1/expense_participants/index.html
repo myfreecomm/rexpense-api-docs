@@ -1,0 +1,56 @@
+---
+layout: default
+title: "Expense participants"
+---
+<article id="participants">
+  <section class="description">
+    <h2><a href="#participant" name="participant">Expense participants</a></h2>
+    <p>An Expense participant list is a group of users who will receive all notification of an Expense.
+      This list contemplates the interested users in the Expense</p>
+    <p>To enter in the list you will have to be responsible for the Expense (changin its status to <code>Analyzing</code>) or
+      be mentioned in Expense comments or comment in an Expense.</p>
+    <p>There is no endpoint to add an user in an Expense participant list. This is done automatically by Rexpense.</p>
+  </section>
+  <section class="code">
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a href="#index" name="index">List participants</a></h3>
+    <p>This endpoint list all participants in an Expense. This list can change according to Expense events.</p>
+    <p>The response uses the User representation shown in <a href="{{ site.baseurl }}/api/v1/memberships#membership">Memberships section</a>.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses/:id/participants</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses/1/participants \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "participants": [{ "id": 1, "first_name": "John", ... }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a href="#destroy" name="destroy">Leave a participant list</a></h3>
+    <p>This endpoint removes the user from an Expense participant list.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/expenses/:id/participants</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/expenses/1/participants \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+  </section>
+</article>

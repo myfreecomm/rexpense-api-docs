@@ -1,0 +1,261 @@
+---
+layout: default
+title: 'Organizations'
+---
+<article id="section_explanation">
+  <section class="description">
+    <h2><a name="organizations" href="#organizations">Organizations</a></h2>
+    <p>This section describes the API of the organization resource. Organizations represent a group of users which have expenses. Generally, organizations represent the company or corporation the group of users belong to.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>restricted_tags:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>expired:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>members_count:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>created_at:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>updated_at:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>members_count:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>logo:</strong></td>
+          <td>
+            <strong>array of object</strong><br />
+            array of styles and URL of the logo
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_links:</strong></td>
+          <td>
+            <strong>array of object</strong><br />
+            array of links of the organization
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example Organization</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "name": "Organization example 1",
+      "restricted_tags": false,
+      "expired": false,
+      "members_count": 3,
+      "created_at": "2014-06-03T14:17:56Z",
+      "updated_at": "2014-06-03T14:17:56Z",
+      "logo": [
+        {
+          "style": "original",
+          "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/original/logo.png",
+          "expiration": "2014-06-27T20:31:43Z"
+        },
+        {
+          "style": "medium",
+          "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/medium/logo.png",
+          "expiration": "2014-06-27T20:31:43Z"
+        },
+        {
+          "style": "thumb",
+          "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/thumb/logo.png",
+          "expiration": "2014-06-27T20:31:43Z"
+        }
+        {
+          "style": "tiny",
+          "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/tiny/logo.png",
+          "expiration": "2014-06-27T20:31:43Z"
+        }
+      ],
+      "_links": [
+        {
+          "rel": "self",
+          "method": "GET",
+          "url": "https://app.rexpense.com/api/v1/organizations/1"
+        },
+        {
+          "rel": "update",
+          "method": "PUT",
+          "url": "https://app.rexpense.com/api/v1/organizations/1"
+        },
+        {
+          "rel": "partial_update",
+          "method": "PATCH",
+          "url": "https://app.rexpense.com/api/v1/organizations/1"
+        },
+        {
+          "rel": "destroy",
+          "method": "DELETE",
+          "url": "https://app.rexpense.com/api/v1/organizations/1"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a name="index" href="#index">List all organizations</a></h3>
+    <p>Retrieve all organizations that a user is member of. It will return a <code>JSON</code> containing the name of the resource
+      with an array of the objects requested. The fields of the organizations can be found in the <a href="{{ site.baseurl }}/api/v1/organizations/#organizations">Organization section</a>.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>per_page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h5>
+    <pre>GET https://app.rexpense.com/api/v1/organizations</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/organizations \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "organizations": [{ "id": 1, ... }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a name="show" href="#show">Show an organization</a></h3>
+    <p>This request return the detailed representation of the organization.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/organizations/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/organizations/:id \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+      {
+        "id": 1,
+        ...
+      }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a name="update" href="#update">Update an organization</a></h3>
+    <p>There are two ways to update an organization: partially or fully. If you'd like to change just one or
+    a few attributes, you have to use the HTTP method <code>PATCH</code>. If you use the HTTP method <code>PUT</code>, you'll have to
+    pass all attributes of the organization. This behaviour is the same for all resources in the Rexpense API.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>name:</strong></td>
+          <td><strong>string</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td><strong>file:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>_destroy:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+     <p>To update an existing organization logo, you have to provide the parameter <code>file</code>. This parameter
+      must be an URL of the logo. This URL may be achieve following the steps
+      in <a href="{{ site.baseurl }}/api/v1/uploads">Uploads</a> section.</p>
+
+    <p>To remove the logo, you have to pass the <code>_destroy</code> parameter with value <code>true</code>.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT/PATCH https://app.rexpense.com/api/v1/organizations/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/organizations/:id \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"name":"My Organization"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "name": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a name="destroy" href="#destroy">Destroy an organization</a></h3>
+    <p>When you destroy an organization, it will <strong>destroy</strong> all expenses attached to it. So,
+    be carefull doing do that!</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/organizations/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/organizations/:id \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'
+      </pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+  </section>
+</article>

@@ -1,0 +1,262 @@
+---
+layout: default
+title: "v1"
+---
+<article id="summary">
+  <section class="description">
+    <h2><a name="summary" href="#summary">Summary</a></h2>
+    <p>This is the version 1 of the Rexpense API. You'll find the navigation menu on the left sidebar, the resources documentation on the middle section and the examples on the right sidebar. All codes and endpoints will be aligned with its subject. If you have any doubts or suggestions, fell free to get in touch via <a href="mailto:support@rexpense.com">support@rexpense.com</a>.</p>
+  </section>
+  <section class="code"></section>
+</article>
+
+<article id="authentication">
+  <section class="description">
+    <h2><a name="access" href="#authentication">Authentication</a></h2>
+    <p>Before accessing the Rexpense API you must create an account at <a href="https://app.rexpense.com">Rexpense</a>. If you already have one, you need to get your API Token on your user preferences page. This token is required in all requests in the API to identify you.</p>
+
+    <p>Authentication in the Rexpense API is carried out using <code>HTTP Basic</code>, however you'll not use your login and password as usual. You'll have to use your API Token as your login and an empty password (if your HTTP client requires a password, you can type <code>X</code>).</p>
+  </section>
+
+  <section class="code">
+    <h3>API Token authentication</h3>
+    <h4>Request Example</h4>
+    <pre>
+$ curl -i -u $YOUR_API_TOKEN:X
+  -H 'User-Agent: My App 1.0' \
+  -H 'Accept: application/json' \
+  -H 'Content-type: application/json' \
+  -X GET https://app.rexpense.com/api/v1
+    </pre>
+  </section>
+</article>
+
+<article id="requirements">
+  <section class="description">
+    <h2><a name="requirements" href="#requirements">Requirements</a></h2>
+    <p>In all requests you have to inform the <code>User-Agent</code> HTTP header. It is mandatory and you'll not be able to access any information if this header is omitted.</p>
+  </section>
+
+  <section class="code">
+    <h3>User-Agent header requirement</h3>
+    <h4>Request Example</h4>
+    <pre>
+$ curl -i -u $YOUR_API_TOKEN:X
+  -H 'User-Agent: My App 1.0' \
+  -H 'Accept: application/json' \
+  -H 'Content-type: application/json' \
+  -X GET https://app.rexpense.com/api/v1
+    </pre>
+  </section>
+</article>
+
+<article id="conventions">
+  <section class="description">
+    <h2><a name="conventions" href="#conventions">Conventions</a></h2>
+    <p>The Rexpense API uses some conventions to facilitate and standardize the comunication.</p>
+  </section>
+  <section class="code"></section>
+</article>
+
+<article id="response_and_request_format">
+  <section class="description">
+    <h3>Request and Response format</h3>
+    <p>The only format available for request and response is <code>JSON</code>.
+  </section>
+  <section class="code">
+    <h3>JSON format</h3>
+    <h4>Example Request</h4>
+    <pre>
+$ curl -i -u $YOUR_API_TOKEN:X
+  -H 'User-Agent: My App 1.0' \
+  -H 'Accept: application/json' \
+  -H 'Content-type: application/json' \
+  -X GET https://app.rexpense.com/api/v1
+    </pre>
+    <h4>Example Response</h4>
+    {% highlight javascript %}
+    {
+      "key": "value"
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="locale">
+  <section class="description">
+    <h3>Locale</h3>
+    <p>For now, the Rexpense API supports two locales.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Language</th>
+          <th>Symbol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>English (US)</td>
+          <td>en</td>
+        </tr>
+        <tr>
+          <td>Portuguese (Brazil)</td>
+          <td>pt</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      There are three ways that the locale can be set. First by the HTTP header <code>Accept-Language</code>,
+      second by the user's preference, and third by the system default locale (en). They have the following precedence: <code>Accept-Language</code> header &gt; user's preference &gt; system default.
+    </p>
+  </section>
+  <section class="code">
+    <h3>List all available Locales</h3>
+    <h4>Example Request</h4>
+    <pre>GET /api/v1/locales</pre>
+    <h4>Example Response</h4>
+    {% highlight javascript %}
+    {
+      "locales": [
+        {"pt": "Português (Brasil)"},
+        {"en": "English (US)"}
+      ]
+    }
+    {% endhighlight %}
+
+    <h3>Use a specific Accept-Language by header</h3>
+    <h4>Example Request</h4>
+    <pre>
+$ curl -i -u $YOUR_API_TOKEN:X
+  -H 'User-Agent: My App 1.0' \
+  -H 'Accept: application/json' \
+  -H 'Content-type: application/json' \
+  -H 'Accept-Language: pt' \
+  -X GET https://app.rexpense.com/api/v1
+    </pre>
+
+    <h3>Set a Locale as the user's preference</h3>
+    <h4>Definition</h4>
+    <pre>PATCH /api/v1/user/preferences</pre>
+    <h4>Request Example</h4>
+    <pre>
+$ curl -i -u $YOUR_API_TOKEN:X
+  -H 'User-Agent: My App 1.0' \
+  -H 'Accept: application/json' \
+  -H 'Content-type: application/json' \
+  -H 'Accept-Language: pt' \
+  -X PATCH https://app.rexpense.com/api/v1/user/preferences \
+  -d '{"user":{"locale":"pt"}}'
+    </pre>
+    {% highlight javascript %}
+    {
+      "user": {
+        "locale": "pt"
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="timezone">
+  <section class="description">
+    <h3>Timezone</h3>
+    <p>All data received and sent through the Rexpense API will be based on UTC timezone. However, a user can have a preference for a timezone. This timezone will be used for presenting and notification purpose. It will not affect the response in API (it will be still in UTC).</p>
+  </section>
+  <section class="code">
+    <h3>List all timezones</h3>
+    <h4>Definition</h4>
+    <pre>GET /api/v1/timezones</pre>
+    <h4>Request Example</h4>
+    <pre>
+$ curl -i -u $YOUR_API_TOKEN:X
+  -H 'User-Agent: My App 1.0' \
+  -H 'Accept: application/json' \
+  -H 'Content-type: application/json' \
+  -X GET https://app.rexpense.com/api/v1/timezones
+    </pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    [
+      {
+        "name": "Brasilia",
+        "description": "(GMT-03:00) Brasilia"
+      },
+      {
+        "name": "Bogota",
+        "description": "(GMT-05:00) Bogota"
+      },
+      ...
+    ]
+    {% endhighlight %}
+
+    <h3>Set Timezone by user's preferences</h3>
+    <h4>Definition</h4>
+    <pre>PATCH /api/v1/user/preferences</pre>
+    <h4>Request Example</h4>
+    <pre>
+$ curl -i -u $YOUR_API_TOKEN:X
+  -H 'User-Agent: My App 1.0' \
+  -H 'Accept: application/json' \
+  -H 'Content-type: application/json' \
+  -H 'Accept-Language: pt' \
+  -X PATCH https://app.rexpense.com/api/v1/user/preferences \
+  -d '{"user":{"timezone":"Brasilia"}}'
+    </pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "user": {
+        "timezone": "Brasilia"
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="date_format">
+  <section class="description">
+    <h3>Date and Time formats</h3>
+    <p>All dates and times will be formatted according to the <a href="http://pt.wikipedia.org/wiki/ISO_8601">ISO 8601</a> standard, and will always be given in UTC / GMT time zone.</p>
+    <p>You must also always provide your date and time values in the same ISO 8601 format and in the UTC time zone.</p>
+
+    <table>
+      <thead>
+        <th>Type</th>
+        <th>Format</th>
+        <th>Example</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Date</td>
+          <td>YYYY-mm-dd</td>
+          <td>2014-05-29</td>
+        </tr>
+        <tr>
+          <td>Datetime</td>
+          <td>YYYY-mm-ddTHH:MM:SSZ</td>
+          <td>2014-05-29T19:11:34Z</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="code">
+  </section>
+</article>
+
+<article id="numbers_format">
+  <section class="description">
+    <h3>Numbers format</h3>
+    <p>All numbers will be provided as either integers or floats, native to JSON.</p>
+  </section>
+</article>
+
+<article id="currencies_code">
+  <section class="description">
+    <h3>Currencies code</h3>
+    <p>All currencies code are based according in <a href="http://pt.wikipedia.org/wiki/ISO_4217" target="_blank">ISO 4217</a>.
+    You must provide a code that is included in this list.</p>
+  </section>
+
+  <section class="code">
+  </section>
+</article>

@@ -1,0 +1,203 @@
+<aside id="main-sidebar">
+  <img id="main-logo" src="{{ site.baseurl }}/assets/logo.png">
+
+  <h3>API V1</h3>
+
+  <nav>
+    <a href="{{ site.baseurl }}/api/v1/#summary">Summary</a>
+    <a href="{{ site.baseurl }}/api/v1/#authentication">Authentication</a>
+    <a href="{{ site.baseurl }}/api/v1/#requirements">Requirements</a>
+    <a href="{{ site.baseurl }}/api/v1/#conventions">Conventions</a>
+
+    {% if page.url contains 'api/v1/index.html' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/#response_and_request_format">Request and Response format</a>
+        <a href="{{ site.baseurl }}/api/v1/#locale">Locale</a>
+        <a href="{{ site.baseurl }}/api/v1/#timezone">Timezone</a>
+        <a href="{{ site.baseurl }}/api/v1/#date_format">Date and Time formats</a>
+        <a href="{{ site.baseurl }}/api/v1/#numbers_format">Numbers format</a>
+        <a href="{{ site.baseurl }}/api/v1/#currencies_code">Currencies code</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/miscellaneous">Miscellaneous</a>
+    {% if page.url contains 'miscellaneous' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/miscellaneous#emojis">Emojis</a>
+      </nav>
+    {% endif %}
+  </nav>
+
+  <h3>Resources</h3>
+
+  <nav>
+    <a href="{{ site.baseurl }}/api/v1/advancements">Advancements</a>
+    {% if page.url contains '/advancements' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/advancements#index">List advancements</a>
+        <a href="{{ site.baseurl }}/api/v1/advancements#show">Show an advancement</a>
+        <a href="{{ site.baseurl }}/api/v1/advancements#create">Create an advancement</a>
+        <a href="{{ site.baseurl }}/api/v1/advancements#update">Update an advancement</a>
+        <a href="{{ site.baseurl }}/api/v1/advancements#destroy">Destroy an advancement</a>
+        <a href="{{ site.baseurl }}/api/v1/advancements#activities">Advancement's activities</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/advancement_participants">Advancements Participants</a>
+    {% if page.url contains '/advancement_participants' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/advancement_participants#index">List participants</a>
+        <a href="{{ site.baseurl }}/api/v1/advancement_participants#destroy">Leave a participants list</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/attachments">Attachments</a>
+    {% if page.url contains '/attachments' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/attachments#index">List attachments</a>
+        <a href="{{ site.baseurl }}/api/v1/attachments#show">Show an attachment</a>
+        <a href="{{ site.baseurl }}/api/v1/attachments#update">Update an attachment</a>
+        <a href="{{ site.baseurl }}/api/v1/attachments#destroy">Destroy an attachment</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/advancement_balances">Advancement Balances</a>
+    {% if page.url contains '/advancement_balances' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/advancement_balances#index">List balances</a>
+        <a href="{{ site.baseurl }}/api/v1/advancement_balances#organizations">List organizations balances</a>
+        <a href="{{ site.baseurl }}/api/v1/advancement_balances#show">Show balance</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/comments">Comments</a>
+    {% if page.url contains '/comments' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/comments#index">List comments</a>
+        <a href="{{ site.baseurl }}/api/v1/comments#show">Show a comment</a>
+        <a href="{{ site.baseurl }}/api/v1/comments#create">Create a comment</a>
+        <a href="{{ site.baseurl }}/api/v1/comments#update">Update a comment</a>
+        <a href="{{ site.baseurl }}/api/v1/comments#destroy">Destroy a comment</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/expenses">Expenses</a>
+    {% if page.url contains '/expenses' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/expenses#index">List all expenses</a>
+        <a href="{{ site.baseurl }}/api/v1/expenses#filtering">Filtering expenses</a>
+        <a href="{{ site.baseurl }}/api/v1/expenses#show">Show an expense</a>
+        <a href="{{ site.baseurl }}/api/v1/expenses#create">Create an expense</a>
+        <a href="{{ site.baseurl }}/api/v1/expenses#update">Update an expense</a>
+        <a href="{{ site.baseurl }}/api/v1/expenses#destroy">Destroy an expense</a>
+        <a href="{{ site.baseurl }}/api/v1/expenses#activities">Expense's activities</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/expense_participants">Expenses Participants</a>
+    {% if page.url contains '/expense_participants' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/expense_participants#index">List participants</a>
+        <a href="{{ site.baseurl }}/api/v1/expense_participants#destroy">Leave a participants list</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/expense_statuses">Expenses Statuses</a>
+    {% if page.url contains '/expense_statuses' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/expense_statuses#show">Show statuses</a>
+        <a href="{{ site.baseurl }}/api/v1/expense_statuses#update">Update status</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/memberships">Memberships</a>
+    {% if page.url contains '/memberships' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/memberships#index">List all memberships</a>
+        <a href="{{ site.baseurl }}/api/v1/memberships#show">Show a membership</a>
+        <a href="{{ site.baseurl }}/api/v1/memberships#create">Create a membership</a>
+        <a href="{{ site.baseurl }}/api/v1/memberships#update">Update a membership</a>
+        <a href="{{ site.baseurl }}/api/v1/memberships#destroy">Remove a membership</a>
+        <a href="{{ site.baseurl }}/api/v1/memberships#leave">Leave an organization</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/mentionables">Mentionables</a>
+    {% if page.url contains '/mentionables' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/mentionables#index">List all mentionables</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/organizations">Organizations</a>
+    {% if page.url contains '/organizations' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/organizations#index">List all organizations</a>
+        <a href="{{ site.baseurl }}/api/v1/organizations#show">Show an organization</a>
+        <a href="{{ site.baseurl }}/api/v1/organizations#update">Update an organization</a>
+        <a href="{{ site.baseurl }}/api/v1/organizations#destroy">Destroy an organization</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/reimbursements">Reimbursements</a>
+    {% if page.url contains '/reimbursements' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/reimbursements#index">List reimbursements</a>
+        <a href="{{ site.baseurl }}/api/v1/reimbursements#filtering">Filtering reimbursements</a>
+        <a href="{{ site.baseurl }}/api/v1/reimbursements#show">Show a reimbursement</a>
+        <a href="{{ site.baseurl }}/api/v1/reimbursements#new">New reimbursement</a>
+        <a href="{{ site.baseurl }}/api/v1/reimbursements#create">Create a reimbursement</a>
+        <a href="{{ site.baseurl }}/api/v1/reimbursements#update">Update a reimbursement</a>
+        <a href="{{ site.baseurl }}/api/v1/reimbursements#destroy">Destroy a reimbursement</a>
+        <a href="{{ site.baseurl }}/api/v1/reimbursements#activities">Reimbursement's activities</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/tags">Tags</a>
+    {% if page.url contains '/tags' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/tags#index">List tags</a>
+        <a href="{{ site.baseurl }}/api/v1/tags#show">Show a tag</a>
+        <a href="{{ site.baseurl }}/api/v1/tags#create">Create a tag</a>
+        <a href="{{ site.baseurl }}/api/v1/tags#update">Update a tag</a>
+        <a href="{{ site.baseurl }}/api/v1/tags#destroy">Destroy a tag</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/notification_preferences">User's Notifications Preferences</a>
+    {% if page.url contains '/notification_preferences' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/notification_preferences#show">Show notifications preferences</a>
+        <a href="{{ site.baseurl }}/api/v1/notification_preferences#update">Update notifications preferences</a>
+        <a href="{{ site.baseurl }}/api/v1/notification_preferences#descriptions">Describe notifications preferences</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/preferences">User's Preferences</a>
+    {% if page.url contains '/preferences' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/preferences#show">Show preferences</a>
+        <a href="{{ site.baseurl }}/api/v1/preferences#update">Update preferences</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/uploads">Uploads</a>
+    {% if page.url contains '/uploads' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/uploads#new">New upload</a>
+        <a href="{{ site.baseurl }}/api/v1/uploads#example">Example</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/webhooks">Webhooks</a>
+    {% if page.url contains '/webhooks' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/webhooks#index">List webhooks</a>
+        <a href="{{ site.baseurl }}/api/v1/webhooks#show">Show a webhook</a>
+        <a href="{{ site.baseurl }}/api/v1/webhooks#create">Create a webhook</a>
+        <a href="{{ site.baseurl }}/api/v1/webhooks#update">Update a webhook</a>
+        <a href="{{ site.baseurl }}/api/v1/webhooks#destroy">Destroy a webhook</a>
+      </nav>
+    {% endif %}
+  </nav>
+</aside>

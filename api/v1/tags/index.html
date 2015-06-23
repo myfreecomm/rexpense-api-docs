@@ -1,0 +1,244 @@
+---
+layout: default
+title: 'Tags'
+---
+<article id="section_explanation">
+  <section class="description">
+    <h2><a name="tags" href="#tags">Tags</a></h2>
+    <p>This section describes the API of the tags resource.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example of Tag</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "name": "Restaurant",
+      "created_at": "2014-06-03T14:17:56Z",
+      "updated_at": "2014-06-03T14:17:56Z",
+      "_links": [
+        {
+          "rel": "self",
+          "method": "GET",
+          "href": "https://app.rexpense.com/api/v1/organizations/1/tags"
+        },
+        {
+          "rel": "update",
+          "method": "PUT",
+          "href": "https://app.rexpense.com/api/v1/organizations/1/tags"
+        },
+        {
+          "rel": "destroy",
+          "method": "DELETE",
+          "href": "https://app.rexpense.com/api/v1/organizations/1/tags"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a name="index" href="#index">List tags</a></h3>
+    <p>Retrieve all tags from a specific organization.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>per_page:</strong></td>
+          <td><strong>integer</strong> <em>limit to 100</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/organizations/:id/tags</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/organizations/1/tags \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "tags": [{ "id": 1, ... }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a name="show" href="#show">Show a tag</a></h3>
+    <p>This request shows the tag complete information.</p>
+    <p>To visualize a tag you have to be an Organization's Administrator or Manager.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong> <em>required</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/organizations/:organization_id/tags/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/organizations/1/tags/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 404 Record Not Found</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "Record Not Found"
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h3><a name="create" href="#create">Create a tag</a></h3>
+    <p>This request creates a new tag.</p>
+    <p>To create a tag you have to be an Organization's Administrator or Manager.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>POST https://app.rexpense.com/api/v1/organization/:organization_id/tags</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/organization/1/tags \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"name":"Restaurant"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "name": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a name="update" href="#update">Update a tag</a></h3>
+    <p>This request updates a new tag.</p>
+    <p>To update a tag you have to be an Organization's Administrator or Manager.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/organizations/:organization_id/tags</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/organizations/1/tags/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"name":"Restaurant"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "name": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a name="destroy" href="#destroy">Destroy a tag</a></h3>
+    <p>To destroy a tag you have to be an Organization's Administrator or Manager.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/organizations/:organization_id/tags/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/organizations/1/tags/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'
+      </pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+  </section>
+</article>

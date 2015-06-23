@@ -1,0 +1,758 @@
+---
+layout: default
+title: 'Expenses'
+---
+<article id="section_explanation">
+  <section class="description">
+    <h2><a name="expenses" href="#expenses">Expenses</a></h2>
+    <p>This section describes the API of the expense resource.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>approved_amount:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>status:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>occurred_at:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>payer:</strong></td>
+          <td><strong>JSON object</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>receiver:</strong></td>
+          <td><strong>JSON object</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>attachments:</strong></td>
+          <td>
+            <strong>array of objects</strong><br />
+            array of an <a href="{{ site.baseurl }}/api/v1/attachments">attachment</a> representation
+          </td>
+        </tr>
+        <tr>
+          <td><strong>tags:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>currency:</strong></td>
+          <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>approved_amount_currency:</strong></td>
+          <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
+        </tr>
+        <tr>
+          <td><strong>latitude:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>longitude:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>location:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>attachments_count:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>comments_count:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>activities_count:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>liquidate_through_advancement:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_links:</strong></td>
+          <td>
+            <strong>array of object</strong><br />
+            array of links of the expense
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example of Expense</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "description": "Expense example 1",
+      "amount": 120.00,
+      "approved_amount": 100.00,
+      "approved_amount_currency": "USD",
+      "status": "awaiting_analysis",
+      "occurred_at": "2014-06-01T14:17:56Z",
+      "payer": {
+        "id": 1,
+        "name": "Company Inc.",
+        "type": "Organization",
+        "logo": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/original/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/medium/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/thumb/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/tiny/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "receiver": {
+        "id": 1,
+        "name": "John",
+        "type": "User",
+        "avatar": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/original/avatar.png",
+            "width": 716,
+            "height": 655,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/medium/avatar.png",
+            "width": 300,
+            "height": 300,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/thumb/avatar.png",
+            "width": 100,
+            "height": 100,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/tiny/avatar.png",
+            "width": 48,
+            "height": 48,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "attachments": [
+        {
+          "id": 1,
+          "description": "Hotel in China",
+          "uploaded_at" : "2014-06-23T14:31:14Z",
+          "content_type": "image/png",
+          "file_name": "expense.png",
+          "url": "https://rexpense-direct-uploads.s3.amazonaws.com/uploads/1/original/expense.png",
+          "user": {
+            "id": 1,
+            "first_name": "John",
+            "last_name": "Rexpense",
+            "mention_name": "JohnRexpense",
+            "emails": [
+              {
+                "email": "john@rexpense.com",
+                "main": true
+              }
+            ]
+          }
+        }
+      ],
+      "tags": "lunch, conference, 2014, new clients",
+      "currency": "BRL",
+      "latitude": -22.913444,
+      "longitude": -47.051059,
+      "location": "R. Cap. Pedro de Alcântara, 212 - Jardim Primavera, SP, 13026-390, República Federativa do Brasil",
+      "attachments_count": 1,
+      "comments_count": 1,
+      "activities_count": 1,
+      "liquidate_through_advancement": true,
+      "created_at": "2014-06-03T14:17:56Z",
+      "updated_at": "2014-06-03T14:17:56Z",
+      "_links": [
+        {
+          "rel": "self",
+          "method": "GET",
+          "href": "https://app.rexpense.com/api/v1/expenses/1"
+        },
+        {
+          "rel": "update",
+          "method": "PUT",
+          "href": "https://app.rexpense.com/api/v1/expenses/1"
+        },
+        {
+          "rel": "partial_update",
+          "method": "PATCH",
+          "href": "https://app.rexpense.com/api/v1/expenses/1"
+        },
+        {
+          "rel": "destroy",
+          "method": "DELETE",
+          "href": "https://app.rexpense.com/api/v1/expenses/1"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a name="index" href="#index">List all expenses</a></h3>
+    <p>Retrieve all expenses that the authenticated user can view or manage. It will return a <code>JSON</code> containing the name of the resource
+      with an array of the objects requested and informations like the total of objects, current page and total pages. The fields of the expenses can be
+      found in the <a href="{{ site.baseurl }}/api/v1/expenses/#expenses">Expense section</a>.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>per_page:</strong></td>
+          <td><strong>integer</strong> <em>limit to 100</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "expenses": [{ "id": 1, ... }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="filtering">
+  <section class="description">
+    <h3><a name="index" href="#index">Filtering a list of expenses</a></h3>
+    <p>You can filter the list of retrieved expenses.</p>
+
+    <h4>Parameters</h4>
+    <p>All parameters must be nested a 'q' parameter.</p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>status_in:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>amount_gteq:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>amount_lteq:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>receiver_id_eq:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>payer_id_eq:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>created_at_gteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>created_at_lteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>updated_at_gteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>updated_at_lteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h5>
+    <pre>GET https://app.rexpense.com/api/v1/expensess</pre>
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"status_in":"awaiting_analysis"}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "expenses": [{ "id": 1, "status": "awaiting_analysis"... }]
+    }
+    {% endhighlight %}
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"amount_gteq":3000.00, "amount_lteq": 4000.00}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 20,
+      "current_page": 1,
+      "total_pages": 2,
+      "expenses": [{ "id": 1, "amount": 3500.00... }]
+    }
+    {% endhighlight %}
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"receiver_id_eq": 1}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 0,
+      "current_page": 1,
+      "total_pages": 1,
+      "expenses": [{ "id": 1, "receiver": {"id": 1, "name": "John Smith"} ... }]
+    }
+    {% endhighlight %}
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"payer_id_eq": 1}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "expenses": [{ "id": 1, "payer": {"id": 1, "name": "Organization example 1"} ... }]
+    }
+    {% endhighlight %}
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"created_at_gteq": "12-24-2013", "created_at_lteq": "12-25-2013"}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": ,
+      "expenses": [{ "id": 1, "receiver": {"id": 1, "created_at": "2013-12-24T23:59Z"} ... }]
+    }
+    {% endhighlight %}
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"updated_at_gteq": "12-24-2013", "updated_at_lteq": "12-25-2013"}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "expenses": [{ "id": 1, "receiver": {"id": 1, "updated_at": "2013-12-24T23:59Z"} ... }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a name="create" href="#show">Show an expense</a></h3>
+    <p>This request shows the expense complete information.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong> <em>required</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/expenses/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 404 Record Not Found</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "Record Not Found"
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h3><a name="create" href="#create">Create an expense</a></h3>
+    <p>This request creates a new expense.</p>
+
+    <h4>Important:</h4>
+    <ul>
+      <li>The authenticated user must belong to an organization to create a new expense.</li>
+      <li>It's not possible to set <code>attachments_count</code>, <code>comments_count</code> and <code>activities_count</code> fields.</li>
+    </ul>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>payer:</strong></td>
+          <td>
+            <strong>payer object attributes</strong> <em>required</em>
+            <div class="nested">
+              <strong>id:</strong> integer<br />
+              <strong>type:</strong> string
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td><strong>occurred_at:</strong></td>
+          <td><strong>string <a href="{{ site.baseurl }}/api/v1/#conventions">iso8601 format</a></strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td><strong>tags:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>latitude:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>longitude:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>location:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>To create an expense with attachments, you have to send the <code>attachments_attributes</code>
+      parameters. This parameters is an array containing one or multiple JSON objects with the following information:</p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>file:</strong></td>
+          <td><strong>string</strong><em> required</em></td>
+        </tr>
+        <tr>
+          <td><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The <code>file</code> parameter must be an URL of the attachment. This URL may be achieve following
+      the steps in <a href="{{ site.baseurl }}/api/v1/uploads">Uploads</a> section.</p>
+
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>POST https://app.rexpense.com/api/v1/expenses</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/expenses \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"amount": 1000.00, "occurred_at": "2013-12-24", "payer": {"id": 1, "type": "Organization"}}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "amount": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a name="update" href="#update">Update an expense</a></h3>
+    <p>There are two ways to update an expense: partially or fully. If you'd like to change just one or
+    a few attributes, you have to use the HTTP method <code>PATCH</code>. If you use the HTTP method <code>PUT</code>, you'll have to
+    pass all attributes of the expense. This behaviour is the same for all resources in the Rexpense API.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td><strong>approved_amount:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>occurred_at:</strong></td>
+          <td><strong>string</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td><strong>tags:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>latitude:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>longitude:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>location:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>To update the expense's attachments, you have to send the <code>attachments_attributes</code>
+      parameters. This parameter is an array containing JSON objects with the following information:</p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong><em> required</em></td>
+        </tr>
+        <tr>
+          <td><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>file:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_destroy:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The <code>file</code> parameter must be an URL of the attachment. This URL may be achieve following
+      the steps in <a href="{{ site.baseurl }}/api/v1/uploads">Uploads</a> section.</p>
+    <p>To remove an attachment, you have to pass the <code>_destroy</code> parameter with value <code>true</code>.</p>
+
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT/PATCH https://app.rexpense.com/api/v1/expenses/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/expenses/:id \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"approved_amount": 1200.00, "occurred_at": "2013-12-28"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "occurred_at": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a name="destroy" href="#destroy">Destroy an expense</a></h3>
+    <p>To destroy an expense you have to own the expense (be the receiver) and it's status must be Awaiting analysis. Also an Organization's Administrator or Manager can destroy any expense that belongs to the organization.</p>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/expenses/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/expenses/:id \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'
+      </pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="activities">
+  <section class="description">
+    <h3><a name="activities" href="#activites">Expense's activities</a></h3>
+    <p>Activities are simple logs from an Expense's changes or comments activities.</p>
+    <p>If the activity is an Expense change, the response will hide the <code>source</code> element from the response.</p>
+    <p>If the activity is a Comment and the <code>content</code> have emojis, they will be rendered as text code by default (for example, <code>:smile:</code>). However, if you'd like to get the unicode of the emojis instead, you should supply a <code>emoji_in_unicode</code> boolean param.
+    <h4>Parameter</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>emoji_in_unicode:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/expenses/:expense_id/activities</pre>
+    <h4>Example request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses/1/activities \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'
+    </pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "changes": "John made a new comment: This is my first comment.",
+      "occurred_at": "2014-06-01T14:17:56Z",
+      "source": {
+        "id": 1,
+        "type": "Comment"
+        ...
+      },
+      "user": {
+        "id": 1,
+        ...
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>

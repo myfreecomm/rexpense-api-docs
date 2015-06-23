@@ -1,0 +1,454 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rexpense API - Memberships</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygments.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <aside id="main-sidebar">
+  <img id="main-logo" src="/assets/logo.png">
+
+  <h3>API V1</h3>
+
+  <nav>
+    <a href="/api/v1/#summary">Summary</a>
+    <a href="/api/v1/#authentication">Authentication</a>
+    <a href="/api/v1/#requirements">Requirements</a>
+    <a href="/api/v1/#conventions">Conventions</a>
+
+    
+
+    <a href="/api/v1/miscellaneous">Miscellaneous</a>
+    
+  </nav>
+
+  <h3>Resources</h3>
+
+  <nav>
+    <a href="/api/v1/advancements">Advancements</a>
+    
+
+    <a href="/api/v1/advancement_participants">Advancements Participants</a>
+    
+
+    <a href="/api/v1/attachments">Attachments</a>
+    
+
+    <a href="/api/v1/balances">Balances</a>
+    
+
+    <a href="/api/v1/comments">Comments</a>
+    
+
+    <a href="/api/v1/expenses">Expenses</a>
+    
+
+    <a href="/api/v1/expense_participants">Expenses Participants</a>
+    
+
+    <a href="/api/v1/expense_statuses">Expenses Statuses</a>
+    
+
+    <a href="/api/v1/memberships">Memberships</a>
+    
+      <nav class="subnav">
+        <a href="/api/v1/memberships#index">List all memberships</a>
+        <a href="/api/v1/memberships#show">Show a membership</a>
+        <a href="/api/v1/memberships#create">Create a membership</a>
+        <a href="/api/v1/memberships#update">Update a membership</a>
+        <a href="/api/v1/memberships#destroy">Remove a membership</a>
+        <a href="/api/v1/memberships#leave">Leave an organization</a>
+      </nav>
+    
+
+    <a href="/api/v1/mentionables">Mentionables</a>
+    
+
+    <a href="/api/v1/organizations">Organizations</a>
+    
+
+    <a href="/api/v1/reimbursements">Reimbursements</a>
+    
+
+    <a href="/api/v1/tags">Tags</a>
+    
+
+    <a href="/api/v1/notification_preferences">User's Notifications Preferences</a>
+    
+
+    <a href="/api/v1/preferences">User's Preferences</a>
+    
+
+    <a href="/api/v1/uploads">Uploads</a>
+    
+
+    <a href="/api/v1/webhooks">Webhooks</a>
+    
+  </nav>
+</aside>
+
+    <article id="main-content">
+      <section id="code-content">
+        <article id="membership">
+  <section class="description">
+    <h2><a href="#membership" name="#membership">Memberships</a></h2>
+    <p>An organization can have several users. As long as these users belong to the organization,
+      they are called members and the relation between a user and an organization is called Membership.</p>
+    <p>Each membership has a role and an importance and responsibility. Below there's a description of each one of them:</p>
+    <ul>
+      <li><strong>User</strong>: This is the lowest responsibility role. A regular user can only create new Expenses and follow it's updates. He can also follow Reimbursement's updates and Advancement's updates that he is the receiver.</li>
+      <li><strong>Analyst</strong>: Can add and remove new members to the organization and promote them to Analysts. It's main responsibility is to manage Expenses.</li>
+      <li><strong>Manager</strong>: Can add and remove new members to the organization and promote them to Analysts or Managers. It's main responsibility is to finish Expenses by using Reimbursements or Advancements.</li>
+      <li><strong>Admin</strong>: Can add and remove new members to the organization and promote them to Analysts, Managers and Administrators. An Administrator can do any action in related to the organization, even delete it. He is the main responsible for the organization and cannot leave the organization unless it has an another Administrator.</li>
+    </ul>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>role:</strong></td>
+          <td>
+            <strong>string</strong><br />
+            'admin', 'manager', 'analyst' and 'member'<br />
+            the role of the user in the organization
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>user:</strong></td>
+          <td><strong>JSON object</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>organization:</strong></td>
+          <td><strong>JSON object</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_links:</strong></td>
+          <td><strong>array of object</strong><br />
+            array of links of the organization's member</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example Membership</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;role&quot;</span><span class="o">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;first_name&quot;</span><span class="o">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Rexpense&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mention_name&quot;</span><span class="o">:</span> <span class="s2">&quot;JohnRexpense&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default_currency&quot;</span><span class="o">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;emails&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="s2">&quot;john@rexpense.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="kc">true</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;organization&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Organization example 1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-03T14:17:56Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-06-03T14:17:56Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_links&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;self&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PUT&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;partial_update&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PATCH&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;destroy&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;_links&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;self&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1/members/1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PUT&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1/members/1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;destroy&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1/members/1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a href="#index" name="#index">List all memberships</a></h3>
+    <p>Retrieve the list of memberships of an organization.
+      It will return a JSON containing the name of the resource with an array of the objects requested using the membership representation.</p>
+    <p>Also, the response is always paginated. To select different pages, you have to pass the following parameters.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>per_page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/organizations/:organization_id/members</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/organizations/:organization_id/members \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;memberships&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;role&quot;</span><span class="o">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+          <span class="p">...</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a href="#show" name="#show">Show a membership</a></h3>
+    <p>Retrieve a specific membership of an organization. Returns a detailed representation of the membership.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/organizations/:organization_id/members/:user_id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/organizations/:organization_id/members/:user_id \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h3><a href="#create" name="#create">Create a membership</a></h3>
+    <p>Creates an invitation for each email. Those invitations are processed asynchronously in another job.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>user[email]:</strong></td>
+          <td>
+            <strong>string</strong><br />
+            <em>required</em><br />
+            <strong>one or more e-mails, separated by commas</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>POST https://app.rexpense.com/api/v1/organizations/:organization_id/members/</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/organizations/:organization_id/members \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"user": {"email":"user@email.com, another.user@email.com"}}'
+      </pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;total_recipients&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;not_added_recipients&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;added_recipients&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;invalid_recipients&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Example Response Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Missing parameters: user&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Example Response Failure when some recipients are correct and others not</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;total_recipients&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;not_added_recipients&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;added_recipients&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;invalid_recipients&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;This organization is expired and in read-only mode until this situation have been solved.&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a href="#update" name="#update">Update a membership</a></h3>
+    <p>Updates the role of the user in the organization. Returns a detailed representation of the membership.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>role:</strong></td>
+          <td>
+            <strong>string</strong><br />
+            'admin', 'manager' and 'member'<br />
+            the role of the user in the organization
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/organizations/:organization_id/members/:user_id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PUT https://app.rexpense.com/api/v1/organizations/:organization_id/members/:user_id \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"role":"member"}'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;role&quot;</span><span class="o">:</span> <span class="s2">&quot;member&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Example Response Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;role&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;can&#39; be blank&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;This organization is expired and in read-only mode until this situation have been solved.&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a href="#destroy" name="#destroy">Remove a membership</a></h3>
+    <p>Removes a membership from an organization.</p>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/organizations/:organization_id/members/:user_id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/organizations/:organization_id/members/:user_id \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;This organization is expired and in read-only mode until this situation have been solved.&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="leave">
+  <section class="description">
+    <h3><a href="#leave" name="#leave">Leave an organization</a></h3>
+    <p>You can leave an organization. However, if you're the only administrator of the organization,
+      you'll not be able to leave the organization.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/organizations/:organization_id/members</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/organizations/:organization_id/members \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Example Response Success</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+    <h4>Example Response Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;You cannot leave the organization being the only organization&#39;s administrator.&quot;</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+        <footer id="main-footer">
+  <p>This project is maintained by <a href="http://www.myfreecomm.com.br">Myfreecomm</a></p>
+</footer>
+
+      </section>
+    </article>
+    <script src="/javascripts/scale.fix.js"></script>
+  </body>
+</html>

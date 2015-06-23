@@ -1,0 +1,411 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rexpense API - Webhooks</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygments.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <aside id="main-sidebar">
+  <img id="main-logo" src="/assets/logo.png">
+
+  <h3>API V1</h3>
+
+  <nav>
+    <a href="/api/v1/#summary">Summary</a>
+    <a href="/api/v1/#authentication">Authentication</a>
+    <a href="/api/v1/#requirements">Requirements</a>
+    <a href="/api/v1/#conventions">Conventions</a>
+
+    
+
+    <a href="/api/v1/miscellaneous">Miscellaneous</a>
+    
+  </nav>
+
+  <h3>Resources</h3>
+
+  <nav>
+    <a href="/api/v1/advancements">Advancements</a>
+    
+
+    <a href="/api/v1/advancement_participants">Advancements Participants</a>
+    
+
+    <a href="/api/v1/attachments">Attachments</a>
+    
+
+    <a href="/api/v1/balances">Balances</a>
+    
+
+    <a href="/api/v1/comments">Comments</a>
+    
+
+    <a href="/api/v1/expenses">Expenses</a>
+    
+
+    <a href="/api/v1/expense_participants">Expenses Participants</a>
+    
+
+    <a href="/api/v1/expense_statuses">Expenses Statuses</a>
+    
+
+    <a href="/api/v1/memberships">Memberships</a>
+    
+
+    <a href="/api/v1/mentionables">Mentionables</a>
+    
+
+    <a href="/api/v1/organizations">Organizations</a>
+    
+
+    <a href="/api/v1/reimbursements">Reimbursements</a>
+    
+
+    <a href="/api/v1/tags">Tags</a>
+    
+
+    <a href="/api/v1/notification_preferences">User's Notifications Preferences</a>
+    
+
+    <a href="/api/v1/preferences">User's Preferences</a>
+    
+
+    <a href="/api/v1/uploads">Uploads</a>
+    
+
+    <a href="/api/v1/webhooks">Webhooks</a>
+    
+      <nav class="subnav">
+        <a href="/api/v1/webhooks#index">List webhooks</a>
+        <a href="/api/v1/webhooks#show">Show a webhook</a>
+        <a href="/api/v1/webhooks#create">Create a webhook</a>
+        <a href="/api/v1/webhooks#update">Update a webhook</a>
+        <a href="/api/v1/webhooks#destroy">Destroy a webhook</a>
+      </nav>
+    
+  </nav>
+</aside>
+
+    <article id="main-content">
+      <section id="code-content">
+        <article id="webhook">
+  <section class="description">
+    <h2><a href="#webhook" name="#webhook">Webhooks</a></h2>
+    <p>Rexpense has a notification system using webhooks that allows you to receive notifications on a pre-specified endpoint (a URL under your system) whenever an event concerning expenses occurs. When it happens, Rexpense will send an <code>HTTP POST</code> request with the payload content (as JSON) in the body of the request.</p>
+    <p>A webhook is related to an organization. So, all expense events (changes) related tothat organizaton will be trigger a webhook request.</p>
+    <p>Remember that your endpoint should be available and respond to the webhook request with a <code>200 Ok</code> HTTP response. If you respond with anything else (or if we receive no response at all), Rexpense will try to send the request again for up to 5 times before giving up.</p>
+    <p>The possible events are:</p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <th><strong>Event</strong></th>
+          <th><strong>Description</strong></th>
+        </tr>
+        <tr>
+          <td>expense_created</td>
+          <td>when expense is created</td>
+        </tr>
+        <tr>
+          <td>expense_updated</td>
+          <td>when expense is updated</td>
+        </tr>
+        <tr>
+          <td>expense_updated_status</td>
+          <td>when expense status is updated</td>
+        </tr>
+        <tr>
+          <td>attachment_created</td>
+          <td>when attachment is created</td>
+        </tr>
+        <tr>
+          <td>attachment_updated</td>
+          <td>when attachment is updated</td>
+        </tr>
+        <tr>
+          <td>attachment_destroyed</td>
+          <td>when attachment is destroyed</td>
+        </tr>
+        <tr>
+          <td>comment_created</td>
+          <td>when comment is created</td>
+        </tr>
+        <tr>
+          <td>comment_updated</td>
+          <td>when comment is updated</td>
+        </tr>
+        <tr>
+          <td>comment_destroyed</td>
+          <td>when comment is destroyed</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example Webhook</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://mysystem.com/webhooks/rexpense&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;My description endpoint&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;_links&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;self&quot;</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1/integrations/webhooks/1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;update&quot;</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;PUT&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1/integrations/webhooks/1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span> <span class="s2">&quot;destroy&quot;</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;https://app.rexpense.com/api/v1/organizations/1/integrations/webhooks/1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+
+    <h4>Example Webhook Payload</h4>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;event&quot;</span><span class="o">:</span> <span class="s2">&quot;comment_created&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span><span class="s2">&quot;2014-10-10T15:19:54Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;expense&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;_links&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;https://app.rexpense.com/api/v1/expenses/8&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;event_source&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;Comment&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_links&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;rel&quot;</span><span class="o">:</span><span class="s2">&quot;self&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="o">:</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="s2">&quot;https://app.rexpense.com/api/v1/expenses/8/comments/25&quot;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h2><a href="#index" name="#index">List webhooks</a></h2>
+    <p>List all webhooks of an organization.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/organizations/:organization_id/integrations/webhooks</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/organizations/1/integrations/webhooks \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;webhooks&quot;</span><span class="o">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://mysystem.com/webhooks/rexpense&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;My description endpoint&quot;</span><span class="p">,</span>
+          <span class="p">...</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://mysystem.com/second-webhooks/rexpense&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;My second description endpoint&quot;</span><span class="p">,</span>
+          <span class="p">...</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h2><a href="#show" name="#show">Show a webhook</a></h2>
+    <p>This endpoint shows webhook information for the organization.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/organizations/:organization_id/integrations/webhooks/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/organizations/1/integrations/webhooks/2 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://mysystem.com/webhooks/rexpense&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;My description endpoint&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 404 Not Found</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Resource not Found.&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h2><a href="#create" name="#create">Create a webhook</a></h2>
+    <p>This endpoint registers a webhook for the organization.</p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>url:</strong></td>
+          <td><strong>string</strong><em> required</em></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>POST https://app.rexpense.com/api/v1/organizations/:organization_id/integrations/webhooks</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/organizations/1/integrations/webhooks \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'
+      -d '{"url":"http://rexpense.com", "description":"My description"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://mysystem.com/webhooks/rexpense&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;My description&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;is invalid&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h2><a href="#update" name="#update">Update a webhook</a></h2>
+    <p>Updates an existing webhook.</p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>It's not possible to update Webhook URL in order to prevent any error when requesting it and sending the payload.
+    If you'd like to change it, you'll have to delete the existing one and create a new one.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT https://app.rexpense.com/api/v1/organizations/:organization_id/integrations/webhooks/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PUT https://app.rexpense.com/api/v1/organizations/1/integrations/webhooks/2 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'
+      -d '{"url":"http://rexpense.com","description":"My updated description"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://rexpense.com&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="s2">&quot;My updated description&quot;</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    <div class="highlight"><pre><code class="javascript">    <span class="p">{</span>
+      <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;is invalid&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+</code></pre></div>
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h2><a href="#destroy" name="#destroy">Destroy a webhook</a></h2>
+    <p>Destroys an existing webhook.</p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong><em> required</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/organizations/:organization_id/integrations/webhooks/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/organizations/1/integrations/webhooks/2 \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'
+    <h4>Response Example Success</h4>
+    <pre>HTTP 204 No Content</pre>
+  </section>
+</article>
+        <footer id="main-footer">
+  <p>This project is maintained by <a href="http://www.myfreecomm.com.br">Myfreecomm</a></p>
+</footer>
+
+      </section>
+    </article>
+    <script src="/javascripts/scale.fix.js"></script>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+---
+layout: default
+title: "Uploads"
+---
+<article id="upload">
+  <section class="description">
+    <h2><a href="#upload" name="#upload">Uploads</a></h2>
+    <p>Rexpense uses Amazon S3 to store all user's uploads. The process is very simple: first you have to request
+    all the necessary informations in Rexpense API; then you have to send the file to Amazon S3. As a response,
+    you'll receive an URL of the file.</p>
+  </section>
+
+  <section class="code">
+  </section>
+</article>
+
+<article id="new">
+  <section class="description">
+    <h2><a href="#new" name="#new">New upload</a></h2>
+    <p>Requests the necessary informations to the Rexpense API. To find out what to do with these informations,
+      see the <a href="#example">Example</a> section.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/uploads/new</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/uploads/new \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "signature": "cWtBq+gNnDPaHC6yfpBb+Uh2yak=",
+      "access_key": "AKIAJW7YQQVLAM5O3CAQ",
+      "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wNi0xN1QyMzoxOTo1MVoiLCJjbIjIwMSJ9XX0=",
+      "host": "https://rexpense-direct-uploads.s3.amazonaws.com/",
+      "acl": "private",
+      "key": "uploads/1/",
+      "expiration": "2014-06-23T14:31:14Z"
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="example">
+  <section class="description">
+    <h2><a href="#example" name="#example">Example</a></h2>
+    <p>In this section, we'll walk through all the steps necessary to upload to Amazon S3.</p>
+  </section>
+
+  <section class="code">
+  </section>
+</article>
+
+<article id="example-request-api">
+  <section class="description">
+    <h3><a href="#example-request-api" name="#example-request-api">Request credentials in Rexpense API</a></h3>
+
+    <p>The first step is to require the informations to the Rexpense API. These informations are required to upload
+      the file to Amazon S3. Without them, it'll not be possible to upload the file.</p>
+
+    <p>You have to use the <code>key</code> parameter provided by the Rexpense API to build the path using the filename.
+      The key you will provide to Amazon S3 must starts with this key, otherwise you won't be able
+      to send the file.</p>
+
+    <p>The <code>expiration</code> parameter provides the time in UTC of when this credential information
+      will expire. After this time, you will have to request another information in the Rexpense API.</p>
+  </section>
+
+  <section class="code">
+    <h4>Request Example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/uploads/new \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "signature": "cWtBq+gNnDPaHC6yfpBb+Uh2yak=",
+      "access_key": "AKIAJW7YQQVLAM5O3CAQ",
+      "policy": "eyJleHBpcmF0aW9uIjoiMjAxNC0wNi0xN1QyMzoxOTo1MVoiLCJjbIjIwMSJ9XX0=",
+      "host": "https://rexpense-direct-uploads.s3.amazonaws.com/",
+      "acl": "private",
+      "key": "uploads/1/",
+      "expiration": "2014-06-23T14:31:14Z"
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="example-upload-file">
+  <section class="description">
+    <h3><a href="#example-upload-file" name="#example-upload-file">Upload file to Amazon S3</a></h3>
+    <p>After getting the informations, you have to send a POST request to the host
+    with the following parameters (remember, the order of the parameters is very <strong>important</strong>): </p>
+
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>key:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>acl:</strong></td>
+          <td><strong>string</strong><br />'private'</td>
+        </tr>
+        <tr>
+          <td><strong>AWSAccessKeyId:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>policy:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>signature:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>success_action_status:</strong></td>
+          <td><strong>string</strong><br />'201'</td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>content-type</strong></td>
+          <td><strong>string</strong><br />content-type of the file</td>
+        </tr>
+        <tr valign="top">
+          <td><strong>file:</strong></td>
+          <td>
+            <strong>string</strong><br />
+            <em>file as Base64</em>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>As a response, you'll receive a XML containing the URL of the file and other informations.
+    This is the URL you'll use to attach a file to a <a href="{{ site.baseurl }}/api/v1/expenses">Expense</a>, for example.</p>
+  </section>
+
+  <section class="code">
+    <h4>Request Example</h4>
+    <pre>$ curl https://rexpense-direct-uploads.s3.amazonaws.com/ \
+      -F "key=uploads/1/my-filename.png" \
+      -F "acl=private" \
+      -F "AWSAccessKeyId=AKIAJW7YQQVLAM5O3CAQ" \
+      -F "policy=eyJleHBpcmF0aW9uIjoiMjAxNC0wNi0xN1QyMzoxOTo1MVoiLCJjbIjIwMSJ9XX0=" \
+      -F "signature=cWtBq+gNnDPaHC6yfpBb+Uh2yak=" \
+      -F "success_action_status=201" \
+      -F "content-type=image/png" \
+      -F "file=@image.png"</pre>
+    <h4>Response Example (XML)</h4>
+    {% highlight xml %}
+    <PostResponse>
+        <Location>
+            https://rexpense-direct-uploads.s3.amazonaws.com/uploads%2F1%2Fmy-filename.png
+        </Location>
+        <Bucket>
+            rexpense-direct-uploads
+        </Bucket>
+        <ETag>
+            "6abd33869e40d554704ed682d94c2973"
+        </ETag>
+    </PostResponse>
+    {% endhighlight %}
+  </section>
+</article>

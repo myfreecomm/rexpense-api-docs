@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rexpense API - Miscellaneous</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygments.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <aside id="main-sidebar">
+  <img id="main-logo" src="/assets/logo.png">
+
+  <h3>API V1</h3>
+
+  <nav>
+    <a href="/api/v1/#summary">Summary</a>
+    <a href="/api/v1/#authentication">Authentication</a>
+    <a href="/api/v1/#requirements">Requirements</a>
+    <a href="/api/v1/#conventions">Conventions</a>
+
+    
+
+    <a href="/api/v1/miscellaneous">Miscellaneous</a>
+    
+      <nav class="subnav">
+        <a href="/api/v1/miscellaneous#emojis">Emojis</a>
+      </nav>
+    
+  </nav>
+
+  <h3>Resources</h3>
+
+  <nav>
+    <a href="/api/v1/advancements">Advancements</a>
+    
+
+    <a href="/api/v1/advancement_participants">Advancements Participants</a>
+    
+
+    <a href="/api/v1/attachments">Attachments</a>
+    
+
+    <a href="/api/v1/balances">Balances</a>
+    
+
+    <a href="/api/v1/comments">Comments</a>
+    
+
+    <a href="/api/v1/expenses">Expenses</a>
+    
+
+    <a href="/api/v1/expense_participants">Expenses Participants</a>
+    
+
+    <a href="/api/v1/expense_statuses">Expenses Statuses</a>
+    
+
+    <a href="/api/v1/memberships">Memberships</a>
+    
+
+    <a href="/api/v1/mentionables">Mentionables</a>
+    
+
+    <a href="/api/v1/organizations">Organizations</a>
+    
+
+    <a href="/api/v1/reimbursements">Reimbursements</a>
+    
+
+    <a href="/api/v1/tags">Tags</a>
+    
+
+    <a href="/api/v1/notification_preferences">User's Notifications Preferences</a>
+    
+
+    <a href="/api/v1/preferences">User's Preferences</a>
+    
+
+    <a href="/api/v1/uploads">Uploads</a>
+    
+
+    <a href="/api/v1/webhooks">Webhooks</a>
+    
+  </nav>
+</aside>
+
+    <article id="main-content">
+      <section id="code-content">
+        <article id="miscellaneous">
+  <section class="description">
+    <h2><a href="#miscellaneous">Miscellaneous</a></h2>
+    <p>This section list a set of miscellaneous resources that the Rexpense API supports.</p>
+  </section>
+
+  <section class="code">
+  </section>
+</article>
+
+<article id="emojis">
+  <section class="description">
+    <h3><a href="#emojis">Emojis</a></h3>
+    <p>The list of supported emojis can be found at <a href="http://www.emoji-cheat-sheet.com/" target="_blank">http://www.emoji-cheat-sheet.com/</a>. Another good list with comparison between emojis in different platforms and their native Unicode representation is at <a href="http://apps.timwhitlock.info/emoji/tables/unicode" target="_blank">http://apps.timwhitlock.info/emoji/tables/unicode</a></p>
+    <p>To use a emoji, you have to check if the field supports it in Rexpense. If it does, you just have to pass the code of the emoji, in either simple text form or unicode form. For example, the messages <code>Ok, I'll accept this expense :+1:</code> (using simple text) and <code>Ok, I'll accept this expense 👍</code> (using unicode char, may not be visible depending on your browser) will both be rendered as <code>Ok, I'll accept this expense <img src="/assets/emojis/+1.png" width="20" height="20" alt="+1" /></code> on Rexpense.</p>
+  </section>
+
+  <section class="code">
+    <h4>Emoji Restriction</h4>
+    <pre>Only emoji icons are available. Sounds will not be recognized.</pre>
+  </section>
+</article>
+
+        <footer id="main-footer">
+  <p>This project is maintained by <a href="http://www.myfreecomm.com.br">Myfreecomm</a></p>
+</footer>
+
+      </section>
+    </article>
+    <script src="/javascripts/scale.fix.js"></script>
+  </body>
+</html>

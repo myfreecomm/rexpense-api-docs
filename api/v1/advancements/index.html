@@ -1,0 +1,655 @@
+---
+layout: default
+title: 'Advancements'
+---
+<article id="section_explanation">
+  <section class="description">
+    <h2><a name="advancements" href="#advancements">Advancements</a></h2>
+    <p>This section describes the API of the advancement resource.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>date:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>payer:</strong></td>
+          <td>
+            <strong>JSON object</strong>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>receiver:</strong></td>
+          <td>
+            <strong>JSON object</strong>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>responsible_user:</strong></td>
+          <td>
+            <strong>JSON object</strong>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>currency:</strong></td>
+          <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_links:</strong></td>
+          <td>
+            <strong>array of object</strong><br />
+            array of links of the advancement
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example of Advancement</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "description": "Advancement example 1",
+      "amount": 609.80,
+      "date": "2014-06-01T14:17:56Z",
+      "payer": {
+        "id": 1,
+        "name": "Company Inc.",
+        "type": "Organization",
+        "logo": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/original/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/medium/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/thumb/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/tiny/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "receiver": {
+        "id": 1,
+        "name": "John",
+        "type": "User",
+        "avatar": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/original/avatar.png",
+            "width": 716,
+            "height": 655,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/medium/avatar.png",
+            "width": 300,
+            "height": 300,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/thumb/avatar.png",
+            "width": 100,
+            "height": 100,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/tiny/avatar.png",
+            "width": 48,
+            "height": 48,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "responsible_user": {
+        "id": 1,
+        "name": "John",
+        "type": "User",
+        "avatar": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/original/avatar.png",
+            "width": 716,
+            "height": 655,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/medium/avatar.png",
+            "width": 300,
+            "height": 300,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/thumb/avatar.png",
+            "width": 100,
+            "height": 100,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/tiny/avatar.png",
+            "width": 48,
+            "height": 48,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "currency": "BRL",
+      "created_at": "2014-06-03T14:17:56Z",
+      "updated_at": "2014-06-03T14:17:56Z",
+      "_links": [
+        {
+          "rel": "self",
+          "method": "GET",
+          "href": "https://app.rexpense.com/api/v1/advancements/1"
+        },
+        {
+          "rel": "update",
+          "method": "PUT",
+          "href": "https://app.rexpense.com/api/v1/advancements/1"
+        },
+        {
+          "rel": "partial_update",
+          "method": "PATCH",
+          "href": "https://app.rexpense.com/api/v1/advancements/1"
+        },
+        {
+          "rel": "destroy",
+          "method": "DELETE",
+          "href": "https://app.rexpense.com/api/v1/advancements/1"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a name="index" href="#index">List all advancements</a></h3>
+    <p>Retrieve all advancements that the authenticated user can view or manage. It will return a <code>JSON</code> containing the name of the resource
+      with an array of the objects requested and informations like the total of objects, current page and total pages. The fields of the advancements can be
+      found in the <a href="{{ site.baseurl }}/api/v1/advancements/#advancements">Advancement section</a>.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>per_page:</strong></td>
+          <td><strong>integer</strong> <em>limit to 100</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/advancements</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "advancements": [{ "id": 1, ... }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="filtering">
+  <section class="description">
+    <h3><a name="index" href="#index">Filtering a list of advancements</a></h3>
+    <p>You can filter the list of retrieved advancements.</p>
+
+    <h4>Parameters</h4>
+    <p>All parameters must be nested in the <code>q</code> parameter.</p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>amount_gteq:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>amount_lteq:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>receiver_id_eq:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>payer_id_eq:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>created_at_gteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>created_at_lteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>updated_at_gteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>updated_at_lteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h5>
+    <pre>GET https://app.rexpense.com/api/v1/advancements</pre>
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"amount_gteq":123.63}}'</pre>
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"amount_gteq":3000.00, "amount_lteq": 4000.00}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 20,
+      "current_page": 1,
+      "total_pages": 2,
+      "advancements": [{ "id": 1, "amount": 3500.00... }]
+    }
+    {% endhighlight %}
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"receiver_id_eq": 1}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 0,
+      "current_page": 1,
+      "total_pages": 1,
+      "advancements": [{ "id": 1, "receiver": {"id": 1, "name": "John Smith"} ... }]
+    }
+    {% endhighlight %}
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"payer_id_eq": 1}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "advancements": [{ "id": 1, "payer": {"id": 1, "name": "Organization example 1"} ... }]
+    }
+    {% endhighlight %}
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"created_at_gteq": "12-24-2013", "created_at_lteq": "12-25-2013"}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": ,
+      "advancements": [{ "id": 1, "created_at": "2013-12-24T23:59Z" ... }]
+    }
+    {% endhighlight %}
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"updated_at_gteq": "12-24-2013", "updated_at_lteq": "12-25-2013"}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "advancements": [{ "id": 1, "updated_at": "2013-12-24T23:59Z" ... }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a name="create" href="#show">Show an advancement</a></h3>
+    <p>This request shows the advancement complete information.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong> <em>required</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/advancements/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/advancements/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 404 Record Not Found</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "Record Not Found"
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h3><a name="create" href="#create">Create an advancements</a></h3>
+    <p>This request creates a new advancement.</p>
+
+    <h4>Important:</h4>
+    <ul>
+      <li>The payer must have a relation with the receiver to create a new advancement.</li>
+    </ul>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>payer:</strong></td>
+          <td>
+            <strong>payer object attributes</strong> <em>required</em>
+            <div class="nested">
+              <strong>id:</strong> integer<br />
+              <strong>type:</strong> string
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>receiver:</strong></td>
+          <td>
+            <strong>receiver object attributes</strong> <em>required</em>
+            <div class="nested">
+              <strong>id:</strong> integer<br />
+              <strong>type:</strong> string
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>date:</strong></td>
+          <td><strong>string </strong><em>required</em><br /><a href="{{ site.baseurl }}/api/v1/#conventions">iso8601 format</a></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>currency:</strong></td>
+          <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>POST https://app.rexpense.com/api/v1/advancements</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/advancements \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"amount": 1000.00, "date": "2013-12-24", "payer": {"id": 1, "type": "Organization"}}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "amount": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a name="update" href="#update">Update an advancement</a></h3>
+    <p>There are two ways to update an advancement: partially or fully. If you'd like to change just one or
+    a few attributes, you have to use the HTTP method <code>PATCH</code>. If you use the HTTP method <code>PUT</code>, you'll have to
+    pass all attributes of the advancement. This behaviour is the same for all resources in the Rexpense API.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>description:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td><strong>date:</strong></td>
+          <td><strong>string</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td><strong>currency:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>payer:</strong></td>
+          <td>
+            <strong>payer object attributes</strong> <em>required</em>
+            <div class="nested">
+              <strong>id:</strong> integer<br />
+              <strong>type:</strong> string
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>receiver:</strong></td>
+          <td>
+            <strong>receiver object attributes</strong> <em>required</em>
+            <div class="nested">
+              <strong>id:</strong> integer<br />
+              <strong>type:</strong> string
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT/PATCH https://app.rexpense.com/api/v1/advancements/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/advancements/:id \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"amount": 1200.00, "date": "2014-12-28"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "date": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a name="destroy" href="#destroy">Destroy an advancement</a></h3>
+    <p>To destroy an advancement you have to own the advancement (be the receiver) or be an Organization's Administrator or Manager (have any relation with the payer).</p>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/advancements/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/advancements/:id \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'
+      </pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="activities">
+  <section class="description">
+    <h3><a name="activities" href="#activites">Advancement's activities</a></h3>
+    <p>Activities are simple logs from an Advancement's changes or comments activities.</p>
+    <p>If the activity is an Advancement change, the response will hide the <code>source</code> element from the response.</p>
+    <p>If the activity is a Comment and the <code>content</code> have emojis, they will be rendered as text code by default (for example, <code>:smile:</code>). However, if you'd like to get the unicode of the emojis instead, you should supply a <code>emoji_in_unicode</code> boolean param.
+    <h4>Parameter</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>emoji_in_unicode:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/advancements/:advancement_id/activities</pre>
+    <h4>Example request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/advancements/1/activities \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'
+    </pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "changes": "John create the advancement",
+      "occurred_at": "2014-06-01T14:17:56Z",
+      "user": {
+        "id": 1,
+        ...
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>

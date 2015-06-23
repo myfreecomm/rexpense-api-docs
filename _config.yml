@@ -1,0 +1,6 @@
+app:
+  name: Rexpense
+  url: https://app.rexpense.com
+  api_url: https://app.rexpense.com/api
+pygments: true
+baseurl: ''
