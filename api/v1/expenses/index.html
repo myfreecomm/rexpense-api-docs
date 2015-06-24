@@ -620,7 +620,7 @@ title: 'Expenses'
       <tbody>
         <tr>
           <td><strong>id:</strong></td>
-          <td><strong>integer</strong><em> required</em></td>
+          <td><strong>integer</strong></td>
         </tr>
         <tr>
           <td><strong>description:</strong></td>
@@ -628,7 +628,7 @@ title: 'Expenses'
         </tr>
         <tr>
           <td><strong>file:</strong></td>
-          <td><strong>string</strong></td>
+          <td><strong>string</strong><em> required</em></td>
         </tr>
         <tr>
           <td valign="top"><strong>_destroy:</strong></td>
@@ -639,7 +639,10 @@ title: 'Expenses'
 
     <p>The <code>file</code> parameter must be an URL of the attachment. This URL may be achieve following
       the steps in <a href="{{ site.baseurl }}/api/v1/uploads">Uploads</a> section.</p>
-    <p>To remove an attachment, you have to pass the <code>_destroy</code> parameter with value <code>true</code>.</p>
+    <p>To remove an attachment, you have to pass the <code>_destroy</code> parameter with value <code>true</code> and the <code>id</code> with the id of the attachment to be removed.</p>
+
+    <h4>Status 'Pending'</h4>
+    <p>When updating a <code>Pending</code> expense, it'll change its status to <code>Awaiting analysis</code>, so an Administrator/Manager/Analyst can check the new informations on the expense.</p>
 
     <h4>Expired organization</h4>
     <p>If the organization is expired, it will return an 402 error.</p>
