@@ -4,3 +4,4 @@ app:
   api_url: https://app.rexpense.com/api
 pygments: true
 baseurl: ''
+encoding: utf-8
