@@ -31,6 +31,12 @@
   <h3>Resources</h3>
 
   <nav>
+    <a href="{{ site.baseurl }}/api/v1/activities">Activities</a>
+    {% if page.url contains '/activities' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/activities#index">List all activities</a>
+      </nav>
+    {% endif %}
     <a href="{{ site.baseurl }}/api/v1/advancements">Advancements</a>
     {% if page.url contains '/advancements' %}
       <nav class="subnav">
