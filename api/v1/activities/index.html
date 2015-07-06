@@ -1,0 +1,78 @@
+---
+layout: default
+title: 'Activities'
+---
+<article id="section_explanation">
+  <section class="description">
+    <h2><a name="activities" href="#activities">Global activities</a></h2>
+    <p>This section describes the API of the global resource activities of the user. These activities are all activities from advancements, expenses and reimbursements ordered in a timeline from most recent to the oldest.</p>
+  </section>
+
+  <section class="code">
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a name="index" href="#index">List all activities</a></h3>
+    <p>Retrieve the last 50 (by default) resource activities of the user. The resources include are: Advancement, Expense and Reimbursement. They will be ordered by <code>created_at</code>, from the most recent to the oldest (like a timeline of events). In case you would like to retrieve informations from a specific window of time, just provide the parameters <code>created_at_gteq</code> <code>created_at_lteq</code>. If you would like an specific amount of activities, just provide the parameter <code>count</code>.</p>
+
+    <h4>Parameters (optional)</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>created_at_gteq *:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>created_at_lteq *:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>count:</strong></td>
+          <td><strong>integer</strong> <em>limit to 150</em></td>
+        </tr>
+        <tr>
+          <td><strong>emoji_in_unicode:</strong></td>
+          <td><strong>boolean</strong> <em>default: false</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>* The <code>gteq</code> and <code>lteq</code> suffix comes from <em>"greater than or equal"</em> and <em>"less than or equal"</em>, respectively.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/activities</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/activities \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "activities": [
+        {
+          "changes": "John made a new comment: This is my first comment.",
+          "occurred_at": "2014-06-01T14:17:56Z",
+          "subject": {
+            "id": 1,
+            "type": "Expense"
+          },
+          "source": {
+            "id": 1,
+            "type": "Comment"
+            ...
+          },
+          "user": {
+            "id": 1,
+            ...
+          }
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
