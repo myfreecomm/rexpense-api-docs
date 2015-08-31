@@ -1,0 +1,56 @@
+---
+layout: default
+title: "Reimbursement participants"
+---
+<article id="participants">
+  <section class="description">
+    <h2><a href="#participant" name="participant">Reimbursement participants</a></h2>
+    <p>A Reimbursement participant list is a group of users who will receive all notification of a Reimbursement.
+      This list contemplates the interested users in the Reimbursement</p>
+    <p>To enter in the list you will have to be responsible for the Reimbursement (changin its status to <code>Analyzing</code>) or
+      be mentioned in Reimbursement comments or comment in a Reimbursement.</p>
+    <p>There is no endpoint to add an user in an Reimbursement participant list. This is done automatically by Rexpense.</p>
+  </section>
+  <section class="code">
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a href="#index" name="index">List participants</a></h3>
+    <p>This endpoint list all participants in a Reimbursement. This list can change according to Reimbursement events.</p>
+    <p>The response uses the User representation shown in <a href="{{ site.baseurl }}/api/v1/memberships#membership">Memberships section</a>.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/reimbursements/:id/participants</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/reimbursements/1/participants \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "participants": [{ "id": 1, "first_name": "John", ... }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a href="#destroy" name="destroy">Leave a participant list</a></h3>
+    <p>This endpoint removes the user from an Reimbursement participant list.</p>
+  </section>
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/reimbursements/:id/participants</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/reimbursements/1/participants \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+  </section>
+</article>
