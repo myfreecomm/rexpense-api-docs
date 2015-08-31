@@ -160,6 +160,14 @@
       </nav>
     {% endif %}
 
+    <a href="{{ site.baseurl }}/api/v1/reimbursement_participants">Reimbursements Participants</a>
+    {% if page.url contains '/reimbursement_participants' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/reimbursement_participants#index">List participants</a>
+        <a href="{{ site.baseurl }}/api/v1/reimbursement_participants#destroy">Leave a participants list</a>
+      </nav>
+    {% endif %}
+
     <a href="{{ site.baseurl }}/api/v1/tags">Tags</a>
     {% if page.url contains '/tags' %}
       <nav class="subnav">
