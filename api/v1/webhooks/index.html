@@ -220,6 +220,10 @@ Content-Type: application/json
           <td valign="top"><strong>description:</strong></td>
           <td><strong>string</strong></td>
         </tr>
+        <tr>
+          <td valign="top"><strong>secret:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -239,6 +243,7 @@ Content-Type: application/json
       "id": 1,
       "url": "http://mysystem.com/webhooks/rexpense",
       "description":"My description",
+      "secret":"my-secret-token",
       ...
     }
     {% endhighlight %}
@@ -265,6 +270,10 @@ Content-Type: application/json
           <td valign="top"><strong>description:</strong></td>
           <td><strong>string</strong></td>
         </tr>
+        <tr>
+          <td valign="top"><strong>secret:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
       </tbody>
     </table>
     <p>It's not possible to update Webhook URL in order to prevent any error when requesting it and sending the payload.
@@ -286,6 +295,7 @@ Content-Type: application/json
       "id": 2,
       "url": "http://rexpense.com",
       "description":"My updated description",
+      "secret":"my-secret-token",
       ...
     }
     {% endhighlight %}
