@@ -82,7 +82,29 @@ title: "Webhooks"
     }
     {% endhighlight %}
 
+
+  </section>
+</article>
+
+<article id="payload">
+  <section class="description">
+    <h2><a href="#payload" name="#payload">Payload</a></h2>
+    <p>When an event is fired, the webhook sends payload to the given URL in a HTTP <code>POST</code> request. Also, two specifics headers are sent:</p>
+    <h3>X-Rexpense-RequestId</h3>
+    <p>This header is <code>unique</code> for each request and is used to calculate the X-Rexpense-Signature.</p>
+    <h3>X-Rexpense-Signature</h3>
+    <p>This header is the signature of the webhook. It is calculated based on the secret field defined on webhook creation. Its value can be found with the HMAC hex digest of the body of the payload added with the X-Rexpense-RequestId in its beginning, using the webhook secret as the key.</p>
+  </section>
+
+  <section class="code">
     <h4>Example Webhook Payload</h4>
+    <pre>
+POST /payload-url
+
+X-Rexpense-RequestId: d12c56319826262a371989930be7d0b2
+X-Rexpense-Signature: b09209a810d67b382193680a0342896c2cb042a8
+Content-Type: application/json
+    </pre>
     {% highlight javascript %}
     {
       "event": "comment_created",
