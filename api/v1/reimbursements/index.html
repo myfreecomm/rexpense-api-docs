@@ -22,6 +22,10 @@ title: 'Reimbursements'
           <td><strong>float</strong></td>
         </tr>
         <tr>
+          <td><strong>tags:</strong></td>
+          <td><strong>array</strong></td>
+        </tr>
+        <tr>
           <td valign="top"><strong>currency:</strong></td>
           <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
         </tr>
@@ -79,6 +83,7 @@ title: 'Reimbursements'
       "description": "Reimbursement example 1",
       "amount": 120.00,
       "currency": "BRL",
+      "tags": ["tag 1", "tag 2"],
       "payer": {
         "id": 1,
         "name": "Company Inc.",
@@ -642,6 +647,10 @@ title: 'Reimbursements'
           <td valign="top"><strong>currency:</strong></td>
           <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
         </tr>
+        <tr>
+          <td valign="top"><strong>tags:</strong></td>
+          <td><strong>array</strong></td>
+        </tr>
       </tbody>
     </table>
 
@@ -701,18 +710,6 @@ title: 'Reimbursements'
           <td><strong>string</strong></td>
         </tr>
         <tr>
-          <td><strong>amount:</strong></td>
-          <td><strong>float</strong> <em>required</em></td>
-        </tr>
-        <tr>
-          <td><strong>date:</strong></td>
-          <td><strong>string</strong> <em>required</em></td>
-        </tr>
-        <tr>
-          <td><strong>currency:</strong></td>
-          <td><strong>string</strong></td>
-        </tr>
-        <tr>
           <td valign="top"><strong>payer:</strong></td>
           <td>
             <strong>payer object attributes</strong> <em>required</em>
@@ -731,6 +728,22 @@ title: 'Reimbursements'
               <strong>type:</strong> string
             </div>
           </td>
+        </tr>
+        <tr>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td><strong>date:</strong></td>
+          <td><strong>string</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td><strong>currency:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>tags:</strong></td>
+          <td><strong>array</strong></td>
         </tr>
       </tbody>
     </table>
