@@ -1,3 +1,5 @@
 source 'https://rubygems.org'
 gem 'github-pages'
 gem 'foreman', '~> 0.64'
+gem 'json', '1.8.2'
+gem 'safe_yaml', '1.0.4'

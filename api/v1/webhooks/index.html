@@ -82,7 +82,29 @@ title: "Webhooks"
     }
     {% endhighlight %}
 
+
+  </section>
+</article>
+
+<article id="payload">
+  <section class="description">
+    <h2><a href="#payload" name="#payload">Payload</a></h2>
+    <p>When an event is fired, the webhook sends payload to the given URL in a HTTP <code>POST</code> request with two specifics headers:</p>
+    <h3>X-Rexpense-RequestId</h3>
+    <p>This header is <code>unique</code> for each request and is used to calculate the X-Rexpense-Signature.</p>
+    <h3>X-Rexpense-Signature</h3>
+    <p>This header is the signature of the webhook. It is calculated based on the secret field defined on webhook creation. Its value can be found with the HMAC hex digest of the body of the payload added with the X-Rexpense-RequestId in its beginning, using the webhook secret as the key.</p>
+  </section>
+
+  <section class="code">
     <h4>Example Webhook Payload</h4>
+    <pre>
+POST /payload-url
+
+X-Rexpense-RequestId: d12c56319826262a371989930be7d0b2
+X-Rexpense-Signature: b09209a810d67b382193680a0342896c2cb042a8
+Content-Type: application/json
+    </pre>
     {% highlight javascript %}
     {
       "event": "comment_created",
@@ -198,6 +220,10 @@ title: "Webhooks"
           <td valign="top"><strong>description:</strong></td>
           <td><strong>string</strong></td>
         </tr>
+        <tr>
+          <td valign="top"><strong>secret:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -217,6 +243,7 @@ title: "Webhooks"
       "id": 1,
       "url": "http://mysystem.com/webhooks/rexpense",
       "description":"My description",
+      "secret":"my-secret-token",
       ...
     }
     {% endhighlight %}
@@ -243,6 +270,10 @@ title: "Webhooks"
           <td valign="top"><strong>description:</strong></td>
           <td><strong>string</strong></td>
         </tr>
+        <tr>
+          <td valign="top"><strong>secret:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
       </tbody>
     </table>
     <p>It's not possible to update Webhook URL in order to prevent any error when requesting it and sending the payload.
@@ -264,6 +295,7 @@ title: "Webhooks"
       "id": 2,
       "url": "http://rexpense.com",
       "description":"My updated description",
+      "secret":"my-secret-token",
       ...
     }
     {% endhighlight %}
