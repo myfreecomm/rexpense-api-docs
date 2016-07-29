@@ -139,6 +139,7 @@ title: 'Tags'
     <h3><a name="create" href="#create">Create a tag</a></h3>
     <p>This request creates a new tag.</p>
     <p>To create a tag you have to be an Organization's Administrator or Manager.</p>
+    <p>It is possible to restrict the tag to a group of users in the organization through the <code>restricted_user_ids</code> parameter. It means only users in <code>restricted_user_ids</code> will be able to use the tag.</p>
 
     <h4>Parameters</h4>
     <table class="parameters">
@@ -146,6 +147,10 @@ title: 'Tags'
         <tr>
           <td><strong>name:</strong></td>
           <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>restricted_user_ids:</strong></td>
+          <td><strong>array of user IDs</strong><br /><em>optional</em></td>
         </tr>
       </tbody>
     </table>
@@ -158,13 +163,14 @@ title: 'Tags'
     <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/organization/1/tags \
         -H 'Accept: application/json' \
         -H 'Content-type: application/json' \
-        -d '{"name":"Restaurant"}'</pre>
+        -d '{"name":"Restaurant","restricted_user_ids":[1900,1945]}'</pre>
     <h4>Response Example Success</h4>
     <pre>HTTP 201 CREATED</pre>
     {% highlight javascript %}
     {
       "id": 1,
-      ...
+      "name": "Restaurant",
+      "restricted_user_ids": [1900, 1945]
     }
     {% endhighlight %}
     <h4>Response Example Failure</h4>
