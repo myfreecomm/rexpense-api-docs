@@ -57,16 +57,6 @@
       </nav>
     {% endif %}
 
-    <a href="{{ site.baseurl }}/api/v1/attachments">Attachments</a>
-    {% if page.url contains '/attachments' %}
-      <nav class="subnav">
-        <a href="{{ site.baseurl }}/api/v1/attachments#index">List attachments</a>
-        <a href="{{ site.baseurl }}/api/v1/attachments#show">Show an attachment</a>
-        <a href="{{ site.baseurl }}/api/v1/attachments#update">Update an attachment</a>
-        <a href="{{ site.baseurl }}/api/v1/attachments#destroy">Destroy an attachment</a>
-      </nav>
-    {% endif %}
-
     <a href="{{ site.baseurl }}/api/v1/advancement_balances">Advancement Balances</a>
     {% if page.url contains '/advancement_balances' %}
       <nav class="subnav">
@@ -74,6 +64,16 @@
         <a href="{{ site.baseurl }}/api/v1/advancement_balances#organizations">List organizations balances</a>
         <a href="{{ site.baseurl }}/api/v1/advancement_balances#show">Show balance</a>
         <a href="{{ site.baseurl }}/api/v1/advancement_balances#filtering">Filtering advancement balances</a>
+      </nav>
+    {% endif %}
+
+    <a href="{{ site.baseurl }}/api/v1/attachments">Attachments</a>
+    {% if page.url contains '/attachments' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/attachments#index">List attachments</a>
+        <a href="{{ site.baseurl }}/api/v1/attachments#show">Show an attachment</a>
+        <a href="{{ site.baseurl }}/api/v1/attachments#update">Update an attachment</a>
+        <a href="{{ site.baseurl }}/api/v1/attachments#destroy">Destroy an attachment</a>
       </nav>
     {% endif %}
 

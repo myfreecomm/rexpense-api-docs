@@ -12,8 +12,8 @@ title: "Expense statuses"
         <tr>
           <td valign="top"><strong>awaiting_analysis</strong></td>
           <td valign="top">
-            <div style="background-color:#FFFFFF; color:#A2A2A2;padding:5px">
-              <strong>#FFFFFF</strong>
+            <div style="background-color:#939393; color:#FFFFFF;padding:5px">
+              <strong>#939393</strong>
             </div>
           </td>
           <td>no manager or admin has analyzed the expense yet</td>
@@ -21,8 +21,8 @@ title: "Expense statuses"
         <tr>
           <td valign="top"><strong>analyzing</strong></td>
           <td valign="top">
-            <div style="background-color:#A2A2A2; color:#FFFFFF; padding:5px">
-              <strong>#A2A2A2</strong>
+            <div style="background-color:#3D3D3D; color:#FFFFFF; padding:5px">
+              <strong>#3D3D3D</strong>
             </div>
           </td>
           <td>a manager or an admin has analyzed the expense</td>
@@ -30,8 +30,8 @@ title: "Expense statuses"
         <tr>
           <td valign="top"><strong>pending</strong></td>
           <td valign="top">
-            <div style="background-color:#FF9B00; color:#FFFFFF; padding:5px">
-              <strong>#FF9B00</strong>
+            <div style="background-color:#F39C0F; color:#FFFFFF; padding:5px">
+              <strong>#F39C0F</strong>
             </div>
           </td>
           <td>there is some information missing in the expense, so the receiver has to complete it</td>
@@ -39,26 +39,26 @@ title: "Expense statuses"
         <tr>
           <td valign="top"><strong>approved</strong></td>
           <td valign="top">
-            <div style="background-color:#52A954; color:#FFFFFF; padding:5px">
-              <strong>#52A954</strong>
+            <div style="background-color:#27AE60; color:#FFFFFF; padding:5px">
+              <strong>#27AE60</strong>
             </div>
           </td>
           <td>a manager or an admin has approved the expense</td>
         </tr>
         <tr>
-          <td valign="top"><strong>paid</strong></td>
+          <td valign="top"><strong>liquidated</strong></td>
           <td valign="top">
             <div style="background-color:#529ECC; color:#FFFFFF; padding:5px">
               <strong>#529ECC</strong>
             </div>
           </td>
-          <td>the expense has been paid, the receiver received the approved amount</td>
+          <td>the expense has been liquidated, the receiver received the approved amount</td>
         </tr>
         <tr>
           <td valign="top"><strong>rejected</strong></td>
           <td valign="top">
-            <div style="background-color:#D95E40; color:#FFFFFF; padding:5px">
-              <strong>#D95E40</strong>
+            <div style="background-color:#C0392A; color:#FFFFFF; padding:5px">
+              <strong>#C0392A</strong>
             </div>
           </td>
           <td>a manager or an admin has rejected the expense</td>
@@ -90,20 +90,20 @@ title: "Expense statuses"
         {
           "slug": "approved",
           "name": "Approved",
-          "background_color": "#52A954",
+          "background_color": "#27AE60",
           "text_color": "#FFFFFF"
         },
         {
           "slug": "rejected",
           "name": "Rejected",
-          "background_color": "#D95E40",
+          "background_color": "#C0392A",
           "text_color": "#FFFFFF"
         },
         {
           "slug": "awaiting_analysis",
           "name": "Awaiting Analysis",
           "background_color": "#FFFFFF",
-          "text_color": "#A2A2A2"
+          "text_color": "#939393"
         }
       ]
     }
@@ -115,21 +115,21 @@ title: "Expense statuses"
   <section class="description">
   <h3><a name="show" href="#show">Update status</a></h3>
   <p>To update an expense status you have to provide the <code>status</code> parameter containing one of the possible
-  status to change. Besides, if the status is <code>approved</code> or <code>paid</code> (only if the status the expense changed from is <code>awaiting_analysis</code>) you have to supply the <code>approved_amount</code>.</p>
+  status to change. Besides, if the status is <code>approved</code> or <code>liquidated</code> (only if the status the expense changed from is <code>awaiting_analysis</code>) you have to supply the <code>approved_amount</code>.</p>
   <h4>Parameters</h4>
   <table class="parameters">
     <tbody>
       <tr>
         <td valign="top"><strong>status</strong></td>
-        <td><strong>string</strong> <em>required</em><br />'awaiting_analysis', 'analyzing', 'pending', 'approved', 'paid' or 'rejected</td>
+        <td><strong>string</strong> <em>required</em><br />'awaiting_analysis', 'analyzing', 'pending', 'approved', 'liquidated' or 'rejected</td>
       </tr>
       <tr>
         <td valign="top"><strong>approved_amount</strong></td>
-        <td><strong>float</strong><br />this field is required only if the status is equals to <em>approved</em> or <em>paid</em></td>
+        <td><strong>float</strong><br />this field is required only if the status is equals to <em>approved</em> or <em>liquidated</em></td>
       </tr>
       <tr>
         <td valign="top"><strong>approved_amount_currency</strong></td>
-        <td><strong>string</strong><br />this field is required only if the status is equals to <em>approved</em> or <em>paid</em><br />based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a><br />default: 'BRL'</td>
+        <td><strong>string</strong><br />this field is required only if the status is equals to <em>approved</em> or <em>liquidated</em><br />based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a><br />default: 'BRL'</td>
       </tr>
     </tbody>
   </table>
