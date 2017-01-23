@@ -320,7 +320,7 @@ title: "Pre-Expenses"
     <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/pre_expenses/1/convert \
        -H 'Accept: application/json' \
        -H 'Content-type: application/json' \
-       -d '{"description": "Some description", "payer": {"id": 1, "type": "Organization"}, "tags": [], "liquidate_through_advancement": false}'</pre>
+       -d '{"description": "Some description", "amount": 125.99, "payer": {"id": 1, "type": "Organization"}, "tags": [], "liquidate_through_advancement": false}'</pre>
     <h4>Response Example Success</h4>
     <pre>HTTP 200 OK</pre>
     {% highlight javascript %}
