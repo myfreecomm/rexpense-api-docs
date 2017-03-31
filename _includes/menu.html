@@ -146,6 +146,14 @@
       </nav>
     {% endif %}
 
+    <a href="{{ site.baseurl }}/api/v1/organization_distance_rules">Organization distance rules</a>
+    {% if page.url contains '/organization_distance_rules' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/organization_distance_rules#index">List distance rule</a>
+        <a href="{{ site.baseurl }}/api/v1/organization_distance_rules#update">Update an distance rule</a>
+      </nav>
+    {% endif %}
+
     <a href="{{ site.baseurl }}/api/v1/pre_expenses">Pre-Expenses</a>
     {% if page.url contains '/pre_expenses' %}
       <nav class="subnav">
