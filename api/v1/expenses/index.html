@@ -38,8 +38,11 @@ title: 'Expenses'
           <td><strong>string</strong></td>
         </tr>
         <tr>
-          <td><strong>travel_time:</strong></td>
-          <td><strong>string</strong></td>
+          <td valign="top"><strong>travel_time:</strong></td>
+          <td>
+            <strong>string</strong><br />
+            String format "HH:MM"
+          </td>
         </tr>
         <tr>
           <td><strong>amount:</strong></td>
@@ -137,7 +140,7 @@ title: 'Expenses'
       "distance_kind": "km",
       "destination": "R. Lourival França, 31-37 - Vista Alegre, São Gonçalo - RJ",
       "origin": "R. Dona Antônia Couto, 1408-1628 - Bom Retiro, São Gonçalo - RJ, 24726-135",
-      "travel_time": "",
+      "travel_time": 60,
       "status": "awaiting_analysis",
       "occurred_at": "2014-06-01T14:17:56Z",
       "payer": {
@@ -545,7 +548,7 @@ title: 'Expenses'
       </tbody>
     </table>
 
-    <p>To create an expense with distance kind, you have to send the <code>kind</code> param with "distance" value. In travel values is required <code>distance</code> and <code>distance_kind</code> where can be "km" or "mi".
+    <p>To create an expense with distance kind, you have to send the <code>kind</code> param with "distance" value. In travel values is required <code>distance</code> and <code>distance_kind</code> where can be "km" or "mi". The <code>travel_time</code> field receive a string in format "HH:MM" and show minutes value, example: "01:01" returns 61 minutes.
     Distance expenses d'not need <code>amount</code>, but have send distance informations:</p>
 
     <table class="parameters">
