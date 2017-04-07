@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 'Expenses'
+title: 'Organization distance rules'
 ---
 <article id="section_explanation">
   <section class="description">
@@ -14,16 +14,19 @@ title: 'Expenses'
           <td><strong>integer</strong></td>
         </tr>
         <tr>
-          <td><strong>amount_cents:</strong></td>
-          <td><strong>integer</strong></td>
-        </tr>
-        <tr>
           <td><strong>organization_id:</strong></td>
           <td><strong>integer</strong></td>
         </tr>
         <tr>
-          <td><strong>amount_for_meter:</strong></td>
+          <td><strong>amount:</strong></td>
           <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>distance_kind:</strong></td>
+          <td>
+            <strong>string</strong><br />
+            options: <code>km</code> or <code>mi</code>
+          </td>
         </tr>
         <tr>
           <td valign="top"><strong>currency:</strong></td>
@@ -38,8 +41,9 @@ title: 'Expenses'
     {% highlight javascript %}
     {
       "id": 1,
-      "amount_cents": 12000,
+      "amount": 12.00,
       "organization_id": 1,
+      "distance_kind": "km",
       "currency": "BRL"
     }
     {% endhighlight %}
@@ -77,15 +81,16 @@ title: 'Expenses'
       ...
     }
     {% endhighlight %}
-    <h4>Response Example When Organization Not Have Rule</h4>
+    <h4>Response Example when organization does not have a distance rule</h4>
     <pre></pre>
     {% highlight javascript %}
     {
       {
-        "id": nil,
-        "amount_cents": nil,
+        "id": null,
+        "amount": 4.68,
         "organization_id": 1,
-        "currency": nil
+        "currency": "BRL",
+        "distance_kind": "km"
       }
     }
     {% endhighlight %}
@@ -94,7 +99,7 @@ title: 'Expenses'
 
 <article id="update">
   <section class="description">
-    <h3><a name="update" href="#update">Update an distance rule</a></h3>
+    <h3><a name="update" href="#update">Update a distance rule</a></h3>
 
     <h4>Parameters</h4>
     <table class="parameters">
@@ -104,8 +109,8 @@ title: 'Expenses'
           <td><strong>integer</strong></td>
         </tr>
         <tr>
-          <td><strong>amount_cents:</strong></td>
-          <td><strong>integer</strong></td>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong></td>
         </tr>
         <tr>
           <td><strong>currency:</strong></td>
@@ -133,7 +138,7 @@ title: 'Expenses'
     {% highlight javascript %}
     {
       "id": 1,
-      "amount_cents": 1000,
+      "amount": 10.00,
       ...
     }
     {% endhighlight %}
@@ -143,8 +148,7 @@ title: 'Expenses'
     {
       "errors": {
         "currency": [
-          "não está incluído na lista",
-          "não pode ficar em branco"
+          "não está incluído na lista"
         ],
         "amount": [
           "não pode ficar em branco"
