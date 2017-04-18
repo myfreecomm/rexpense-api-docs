@@ -50,6 +50,17 @@
       </nav>
     {% endif %}
 
+    <a href="{{ site.baseurl }}/api/v1/advancement_devolutions">Advancement devolutions</a>
+    {% if page.url contains '/advancement_devolutions' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/advancement_devolutions#index">List devolutions</a>
+        <a href="{{ site.baseurl }}/api/v1/advancement_devolutions#filtering">Filtering devolutions</a>
+        <a href="{{ site.baseurl }}/api/v1/advancement_devolutions#show">Show an devolution</a>
+        <a href="{{ site.baseurl }}/api/v1/advancement_devolutions#create">Create an devolution</a>
+        <a href="{{ site.baseurl }}/api/v1/advancement_devolutions#update">Update an devolution</a>
+        <a href="{{ site.baseurl }}/api/v1/advancement_devolutions#destroy">Destroy an devolution</a>
+      </nav>
+    {% endif %}
     <a href="{{ site.baseurl }}/api/v1/advancement_participants">Advancements Participants</a>
     {% if page.url contains '/advancement_participants' %}
       <nav class="subnav">
