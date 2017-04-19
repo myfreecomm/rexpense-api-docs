@@ -124,6 +124,36 @@ title: 'Expenses'
         </tr>
       </tbody>
     </table>
+
+    <p>The following parameters will only available when the expense kind is distance.</p>
+
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>distance:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>distance_kind:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>destination:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>origin:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>travel_time:</strong></td>
+          <td>
+            <strong>string</strong><br />
+            String format "HH:MM"
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
   <section class="code">
@@ -135,12 +165,12 @@ title: 'Expenses'
       "amount": 120.00,
       "approved_amount": 100.00,
       "approved_amount_currency": "USD",
-      "kind": "distance",
-      "distance": 3.4,
-      "distance_kind": "km",
-      "destination": "R. Lourival França, 31-37 - Vista Alegre, São Gonçalo - RJ",
-      "origin": "R. Dona Antônia Couto, 1408-1628 - Bom Retiro, São Gonçalo - RJ, 24726-135",
-      "travel_time": 60,
+      "kind": "distance", // only when kind is distance
+      "distance": 3.4, // only when kind is distance
+      "distance_kind": "km", // only when kind is distance
+      "destination": "R. Lourival França, 31-37 - Vista Alegre, São Gonçalo - RJ", // only when kind is distance
+      "origin": "R. Dona Antônia Couto, 1408-1628 - Bom Retiro, São Gonçalo - RJ, 24726-135", // only when kind is distance
+      "travel_time": 60, // only when kind is distance
       "status": "awaiting_analysis",
       "occurred_at": "2014-06-01T14:17:56Z",
       "payer": {
