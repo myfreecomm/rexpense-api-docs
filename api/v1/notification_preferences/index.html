@@ -88,6 +88,10 @@ title: "User's Notifications Preferences"
           <td><strong>email_on_reimbursement_destroyed:</strong></td>
           <td><strong>boolean</strong></td>
         </tr>
+        <tr>
+          <td><strong>email_on_advancement_devolution_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
       </tbody>
     </table>
 
@@ -170,6 +174,10 @@ title: "User's Notifications Preferences"
           <td><strong>mobile_on_reimbursement_destroyed:</strong></td>
           <td><strong>boolean</strong></td>
         </tr>
+        <tr>
+          <td><strong>mobile_on_advancement_devolution_created:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -222,6 +230,7 @@ title: "User's Notifications Preferences"
       "email_on_reimbursement_created": true,
       "email_on_reimbursement_updated": true,
       "email_on_reimbursement_destroyed": true,
+      "email_on_advancement_devolution_created": true,
       "mobile_on_expense_created": true,
       "mobile_on_expense_updated": true,
       "mobile_on_expense_destroyed": true,
@@ -240,6 +249,7 @@ title: "User's Notifications Preferences"
       "mobile_on_reimbursement_created": true,
       "mobile_on_reimbursement_updated": true,
       "mobile_on_reimbursement_destroyed": true,
+      "mobile_on_advancement_devolution_created": true,
       "_links": [
         {
           "rel": "self",
@@ -411,6 +421,10 @@ title: "User's Notifications Preferences"
       {
         "names": ["email_on_advancement_destroyed", "mobile_on_advancement_destroyed"],
         "description": "An advancement was deleted"
+      },
+      {
+        "names": ["email_on_advancement_devolution_created", "mobile_on_advancement_devolution_created"],
+        "description": "An new advancement devolution was created"
       },
       {
         "names": ["email_on_reimbursement_created", "mobile_on_reimbursement_created"],
