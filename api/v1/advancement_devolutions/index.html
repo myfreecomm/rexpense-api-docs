@@ -1,0 +1,221 @@
+---
+layout: default
+title: 'Advancements'
+---
+<article id="section_explanation">
+  <section class="description">
+    <h2><a name="advancement_devolutions" href="#advancement_devolutions">Advancement Devolutions</a></h2>
+    <p>This section describes the API of the advancement devolution resource.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong></td>
+        </tr>
+        <tr>
+          <td><strong>currency:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>receiver_id:</strong></td>
+          <td>
+            <strong>JSON object</strong>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>payer:</strong></td>
+          <td>
+            <strong>JSON object</strong>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>currency:</strong></td>
+          <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_links:</strong></td>
+          <td>
+            <strong>array of object</strong><br />
+            array of links of the advancement
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example of Advancement Devolution</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "amount": 609.80,
+      "date": "2014-06-01T14:17:56Z",
+      "payer": {
+        "id": 1,
+        "name": "Company Inc.",
+        "type": "Organization",
+        "logo": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/original/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/medium/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/thumb/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/tiny/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "receiver": {
+        "id": 1,
+        "name": "John",
+        "type": "User",
+        "avatar": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/original/avatar.png",
+            "width": 716,
+            "height": 655,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/medium/avatar.png",
+            "width": 300,
+            "height": 300,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/thumb/avatar.png",
+            "width": 100,
+            "height": 100,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/tiny/avatar.png",
+            "width": 48,
+            "height": 48,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "currency": "BRL",
+      "created_at": "2014-06-03T14:17:56Z",
+      "updated_at": "2014-06-03T14:17:56Z",
+      "_links": [
+        {
+          "rel": "create",
+          "method": "POST",
+          "href": "https://app.rexpense.com/api/v1/advancement_devolutions/"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h3><a name="create" href="#create">Create an advancement devolutions</a></h3>
+    <p>This request creates a new advancement devolution.</p>
+
+    <h4>Important:</h4>
+    <ul>
+      <li>The payer must have a relation with the receiver to create a new advancement devolution.</li>
+    </ul>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td valign="top"><strong>payer:</strong></td>
+          <td>
+            <strong>payer object attributes</strong> <em>required</em>
+            <div class="nested">
+              <strong>id:</strong> integer<br />
+              <strong>type:</strong> string
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>receiver:</strong></td>
+          <td>
+            <strong>receiver object attributes</strong> <em>required</em>
+            <div class="nested">
+              <strong>id:</strong> integer<br />
+              <strong>type:</strong> string
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>amount:</strong></td>
+          <td><strong>float</strong> <em>required</em></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>date:</strong></td>
+          <td><strong>string </strong><em>required</em><br /><a href="{{ site.baseurl }}/api/v1/#conventions">iso8601 format</a></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>currency:</strong></td>
+          <td><strong>string<br /></strong>based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Expired organization</h4>
+    <p>If the organization is expired, it will return an 402 error.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>POST https://app.rexpense.com/api/v1/advancement_devolutions</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/advancement_devolutions \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"amount": 1000.00, "date": "2013-12-24", "receiver": {"id": 1, "type": "Organization"}}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "amount": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+    <h4>Example Response Failure when organization is expired</h4>
+    <pre>HTTP 402 Payment Required</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "This organization is expired and in read-only mode until this situation have been solved."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
