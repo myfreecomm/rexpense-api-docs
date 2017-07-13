@@ -39,21 +39,23 @@ title: 'Organization distance rules'
   <section class="code">
     <h4>Example of Distance Rule</h4>
     {% highlight javascript %}
-    {
-      "id": 1,
-      "amount": 12.00,
-      "organization_id": 1,
-      "distance_kind": "km",
-      "currency": "BRL"
-    }
+    [
+      {
+        "id": 1,
+        "amount": 12.0,
+        "organization_id": 1,
+        "distance_kind": "km",
+        "currency": "BRL"
+      }
+    ]
     {% endhighlight %}
   </section>
 </article>
 
 <article id="index">
   <section class="description">
-    <h3><a name="index" href="#index">Show distance rule</a></h3>
-    <p>Retrieve organization distance rule if exist or a new object with default values.</p>
+    <h3><a name="index" href="#index">List distance rules</a></h3>
+    <p>Retrieve organization distance rules list. When the administrator of the organization did not set the distance rule, a default distance rule with <code>id: null</code> is returned.</p>
 
     <h4>Parameters</h4>
     <table class="parameters">
@@ -76,15 +78,17 @@ title: 'Organization distance rules'
     <h4>Response Example Success</h4>
     <pre>HTTP 200 OK</pre>
     {% highlight javascript %}
-    {
-      "id": 1,
-      ...
-    }
+    [
+      {
+        "id": 1,
+        ...
+      }
+    ]
     {% endhighlight %}
     <h4>Response Example when organization does not have a distance rule (return default values)</h4>
     <pre></pre>
     {% highlight javascript %}
-    {
+    [
       {
         "id": null,
         "amount": 4.68,
@@ -92,7 +96,7 @@ title: 'Organization distance rules'
         "currency": "BRL",
         "distance_kind": "km"
       }
-    }
+    ]
     {% endhighlight %}
   </section>
 </article>
@@ -136,11 +140,13 @@ title: 'Organization distance rules'
     <h4>Response Example Success</h4>
     <pre>HTTP 200 OK</pre>
     {% highlight javascript %}
-    {
-      "id": 1,
-      "amount": 10.00,
-      ...
-    }
+    [
+      {
+        "id": 1,
+        "amount": 10.0,
+        ...
+      }
+    ]
     {% endhighlight %}
     <h4>HTTP 422 Unprocessable Entity</h4>
     <pre></pre>
