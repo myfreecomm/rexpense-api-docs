@@ -25,7 +25,16 @@ title: "Expense statuses"
               <strong>#3D3D3D</strong>
             </div>
           </td>
-          <td>a manager or an admin has analyzed the expense</td>
+          <td>an analyst, manager or an admin is analyzing the expense</td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>analyzed</strong></td>
+          <td valign="top">
+            <div style="background-color:#34495e; color:#FFFFFF; padding:5px">
+              <strong>#34495e</strong>
+            </div>
+          </td>
+          <td>an analyst, manager or an admin has analyzed the expense</td>
         </tr>
         <tr>
           <td valign="top"><strong>pending</strong></td>
@@ -121,7 +130,7 @@ title: "Expense statuses"
     <tbody>
       <tr>
         <td valign="top"><strong>status</strong></td>
-        <td><strong>string</strong> <em>required</em><br />'awaiting_analysis', 'analyzing', 'pending', 'approved', 'liquidated' or 'rejected</td>
+        <td><strong>string</strong> <em>required</em><br />'awaiting_analysis', 'analyzing', 'analyzed', 'pending', 'approved', 'liquidated' or 'rejected</td>
       </tr>
       <tr>
         <td valign="top"><strong>approved_amount</strong></td>
