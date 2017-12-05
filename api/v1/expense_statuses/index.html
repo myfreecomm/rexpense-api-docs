@@ -72,6 +72,15 @@ title: "Expense statuses"
           </td>
           <td>a manager or an admin has rejected the expense</td>
         </tr>
+        <tr>
+          <td valign="top"><strong>noncompliant</strong></td>
+          <td valign="top">
+            <div style="background-color:#690000; color:#FFFFFF; padding:5px">
+              <strong>#690000</strong>
+            </div>
+          </td>
+          <td>the expense is not in compliance with organization's policies</td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -139,6 +148,10 @@ title: "Expense statuses"
       <tr>
         <td valign="top"><strong>approved_amount_currency</strong></td>
         <td><strong>string</strong><br />this field is required only if the status is equals to <em>approved</em> or <em>liquidated</em><br />based on <a href="{{ site.baseurl }}/api/v1/#currencies_code">currencies code</a><br />default: 'BRL'</td>
+      </tr>
+      <tr>
+        <td valign="top"><strong>ignore_noncompliant</strong></td>
+        <td><strong>boolean</strong><br />this field is required only if the status is <em>noncompliant</em>. If not provided, it will respond with a <em>422 HTTP Unprocessable Entity</em>.</td>
       </tr>
     </tbody>
   </table>
