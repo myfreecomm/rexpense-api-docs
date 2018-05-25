@@ -37,6 +37,27 @@
         <a href="{{ site.baseurl }}/api/v1/activities#index">List all activities</a>
       </nav>
     {% endif %}
+    <a href="{{ site.baseurl }}/api/v1/accountabilities">Accountabilities</a>
+    {% if page.url contains '/accountabilities' %}
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/accountabilities#index">List all accountabilities</a>
+      </nav>
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/accountabilities#create">Create accountabilities</a>
+      </nav>
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/accountabilities#show">Show an accountability</a>
+      </nav>
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/accountabilities#update">Update accountability</a>
+      </nav>
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/accountabilities#destroy">Destroy accountability</a>
+      </nav>
+      <nav class="subnav">
+        <a href="{{ site.baseurl }}/api/v1/accountabilities#change_status">Change accountability status</a>
+      </nav>
+    {% endif %}
     <a href="{{ site.baseurl }}/api/v1/advancements">Advancements</a>
     {% if page.url contains '/advancements' %}
       <nav class="subnav">
