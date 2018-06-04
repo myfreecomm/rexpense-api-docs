@@ -199,38 +199,34 @@ title: 'Corporative cards'
   </section>
 </article>
 
-<!--<article id="filtering">
+<article id="filtering">
   <section class="description">
-    <h3><a name="index" href="#index">Filtering a list of expenses</a></h3>
-    <p>You can filter the list of retrieved expenses.</p>
+    <h3><a name="index" href="#index">Filtering corporative cards</a></h3>
+    <p>You can filter the list of retrieved corporative cards.</p>
 
     <h4>Parameters</h4>
-    <p>All parameters must be nested a 'q' parameter.</p>
+    <p>All parameters must be nested a <code>q</code> parameter.</p>
     <table class="parameters">
       <tbody>
         <tr>
-          <td><strong>status_in:</strong></td>
+          <td><strong>id_in:</strong></td>
+          <td><strong>array of integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>name_cont:</strong></td>
           <td><strong>string</strong></td>
         </tr>
         <tr>
-          <td><strong>amount_gteq:</strong></td>
-          <td><strong>float</strong></td>
-        </tr>
-        <tr>
-          <td><strong>amount_lteq:</strong></td>
-          <td><strong>float</strong></td>
-        </tr>
-        <tr>
-          <td><strong>receiver_id_eq:</strong></td>
-          <td><strong>integer</strong></td>
-        </tr>
-        <tr>
-          <td><strong>payer_id_eq:</strong></td>
-          <td><strong>integer</strong></td>
-        </tr>
-        <tr>
-          <td><strong>created_at_gteq:</strong></td>
+          <td><strong>flag_cont:</strong></td>
           <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>organization_id_in:</strong></td>
+          <td><strong>array of integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>active_eq:</strong></td>
+          <td><strong>boolean</strong></td>
         </tr>
         <tr>
           <td><strong>created_at_lteq:</strong></td>
@@ -240,111 +236,29 @@ title: 'Corporative cards'
           <td><strong>updated_at_gteq:</strong></td>
           <td><strong>string</strong></td>
         </tr>
-        <tr>
-          <td><strong>updated_at_lteq:</strong></td>
-          <td><strong>string</strong></td>
-        </tr>
-        <tr>
-          <td><strong>search_tags:</strong></td>
-          <td><strong>string</strong></td>
-        </tr>
-        <tr>
-          <td valign="top"><strong>has_tag:</strong></td>
-          <td><strong>string</strong><br />Available values: <em>'1'</em>, <em>'0'</em>, <em>''</em></td>
-        </tr>
       </tbody>
     </table>
   </section>
 
   <section class="code">
     <h4>Definition</h5>
-    <pre>GET https://app.rexpense.com/api/v1/expensess</pre>
+    <pre>GET https://app.rexpense.com/api/v1/corporative_cards</pre>
     <h4>Request example</h4>
-    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/corporative_cards \
       -H 'Accept: application/json' \
       -H 'Content-type: application/json' \
-      -d '{"q": {"status_in":"awaiting_analysis"}}'</pre>
+      -d '{"q": {"id": [1]}}'</pre>
     <h4>Response Example</h4>
     {% highlight javascript %}
     {
       "count": 1,
       "current_page": 1,
       "total_pages": 1,
-      "expenses": [{ "id": 1, "status": "awaiting_analysis"... }]
-    }
-    {% endhighlight %}
-    <h4>Request example</h4>
-    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
-      -H 'Accept: application/json' \
-      -H 'Content-type: application/json' \
-      -d '{"q": {"amount_gteq":3000.00, "amount_lteq": 4000.00}}'</pre>
-    <h4>Response Example</h4>
-    {% highlight javascript %}
-    {
-      "count": 20,
-      "current_page": 1,
-      "total_pages": 2,
-      "expenses": [{ "id": 1, "amount": 3500.00... }]
-    }
-    {% endhighlight %}
-    <h4>Request example</h4>
-    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
-      -H 'Accept: application/json' \
-      -H 'Content-type: application/json' \
-      -d '{"q": {"receiver_id_eq": 1}}'</pre>
-    <h4>Response Example</h4>
-    {% highlight javascript %}
-    {
-      "count": 0,
-      "current_page": 1,
-      "total_pages": 1,
-      "expenses": [{ "id": 1, "receiver": {"id": 1, "name": "John Smith"} ... }]
-    }
-    {% endhighlight %}
-    <h4>Request example</h4>
-    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
-      -H 'Accept: application/json' \
-      -H 'Content-type: application/json' \
-      -d '{"q": {"payer_id_eq": 1}}'</pre>
-    <h4>Response Example</h4>
-    {% highlight javascript %}
-    {
-      "count": 1,
-      "current_page": 1,
-      "total_pages": 1,
-      "expenses": [{ "id": 1, "payer": {"id": 1, "name": "Organization example 1"} ... }]
-    }
-    {% endhighlight %}
-    <h4>Request example</h4>
-    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
-      -H 'Accept: application/json' \
-      -H 'Content-type: application/json' \
-      -d '{"q": {"created_at_gteq": "12-24-2013", "created_at_lteq": "12-25-2013"}}'</pre>
-    <h4>Response Example</h4>
-    {% highlight javascript %}
-    {
-      "count": 1,
-      "current_page": 1,
-      "total_pages": ,
-      "expenses": [{ "id": 1, "receiver": {"id": 1, "created_at": "2013-12-24T23:59Z"} ... }]
-    }
-    {% endhighlight %}
-    <h4>Request example</h4>
-    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/expenses \
-      -H 'Accept: application/json' \
-      -H 'Content-type: application/json' \
-      -d '{"q": {"updated_at_gteq": "12-24-2013", "updated_at_lteq": "12-25-2013"}}'</pre>
-    <h4>Response Example</h4>
-    {% highlight javascript %}
-    {
-      "count": 1,
-      "current_page": 1,
-      "total_pages": 1,
-      "expenses": [{ "id": 1, "receiver": {"id": 1, "updated_at": "2013-12-24T23:59Z"} ... }]
+      "corporative_cards": [{ "id": 1 }]
     }
     {% endhighlight %}
   </section>
-</article>-->
+</article>
 
 <article id="show">
   <section class="description">
