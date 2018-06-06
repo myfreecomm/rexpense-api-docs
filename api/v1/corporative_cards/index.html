@@ -26,6 +26,10 @@ title: 'Corporative cards'
           <td><strong>string</strong></td>
         </tr>
         <tr>
+          <td><strong>expiration_date:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
           <td><strong>expiration_month:</strong></td>
           <td><strong>integer</strong></td>
         </tr>
@@ -62,8 +66,9 @@ title: 'Corporative cards'
     {
       "id": 1,
       "name": "Credit card",
-      "number": "XXXXXXXXXXXX1234",
+      "number": "************1234",
       "flag": "mastercard",
+      "expiration_date": "05/19",
       "expiration_month": 5,
       "expiration_year": 2019
       "active": true,
@@ -322,24 +327,24 @@ title: 'Corporative cards'
           <td><strong>string</strong></td>
         </tr>
         <tr>
-          <td><strong>flag:</strong></td>
-          <td><strong>string</strong></td>
-        </tr>
-        <tr>
           <td><strong>number:</strong></td>
           <td><strong>string</strong></td>
         </tr>
         <tr>
-          <td><strong>expiration_month:</strong></td>
-          <td><strong>integer</strong></td>
-        </tr>
-        <tr>
-          <td><strong>expiration_year:</strong></td>
-          <td><strong>integer</strong></td>
+          <td><strong>expiration_date:</strong></td>
+          <td><strong>string</strong> <em>MM/YY format</em></td>
         </tr>
         <tr>
           <td valign="top"><strong>organization_id:</strong></td>
           <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>user_id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>active:</strong></td>
+          <td><strong>boolean</strong></td>
         </tr>
       </tbody>
     </table>
@@ -388,20 +393,12 @@ title: 'Corporative cards'
           <td><strong>string</strong><em> required</em></td>
         </tr>
         <tr>
-          <td><strong>flag:</strong></td>
-          <td><strong>string</strong></td>
+          <td><strong>expiration_date:</strong></td>
+          <td><strong>string</strong><em> MM/YY format</em></td>
         </tr>
         <tr>
-          <td><strong>number:</strong></td>
-          <td><strong>string</strong><em> required</em></td>
-        </tr>
-        <tr>
-          <td><strong>expiration_month:</strong></td>
-          <td><strong>integer</strong><em> required</em></td>
-        </tr>
-        <tr>
-          <td><strong>expiration_year:</strong></td>
-          <td><strong>integer</strong><em> required</em></td>
+          <td><strong>active:</strong></td>
+          <td><strong>boolean</strong></td>
         </tr>
         <tr>
           <td valign="top"><strong>organization_id:</strong></td>
@@ -418,7 +415,7 @@ title: 'Corporative cards'
     <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/corporative_cards/:id \
         -H 'Accept: application/json' \
         -H 'Content-type: application/json' \
-        -d '{"name": "Updated credit card name"}'</pre>
+        -d '{"name": "John John"}'</pre>
     <h4>Response Example Success</h4>
     <pre>HTTP 200 OK</pre>
     {% highlight javascript %}
