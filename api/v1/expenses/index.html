@@ -128,8 +128,8 @@ title: 'Expenses'
           <td><strong>integer</strong></td>
         </tr>
         <tr>
-          <td><strong>liquidate_through_advancement:</strong></td>
-          <td><strong>boolean</strong></td>
+          <td><strong>liquidation_through:</strong></td>
+          <td><strong>string</strong> (advancement, reimbursement or corporative_card)</td>
         </tr>
         <tr>
           <td valign="top"><strong>_links:</strong></td>
@@ -301,7 +301,7 @@ title: 'Expenses'
       "attachments_count": 1,
       "comments_count": 1,
       "activities_count": 1,
-      "liquidate_through_advancement": true,
+      "liquidation_through": "advancement",
       "created_at": "2014-06-03T14:17:56Z",
       "updated_at": "2014-06-03T14:17:56Z",
       "_links": [
@@ -423,7 +423,23 @@ title: 'Expenses'
         </tr>
         <tr>
           <td valign="top"><strong>has_tag:</strong></td>
-          <td><strong>string</strong><br />Available values: <em>'1'</em>, <em>'0'</em>, <em>''</em></td>
+          <td>
+            <strong>array of string</strong><br />
+            accepted values: <em>'1'</em>, <em>'0'</em>, <em>''</em>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>liquidation_through_in:</strong></td>
+          <td>
+            <strong>array of strings</strong><br>
+            accepted values: <em>advancement</em>, <em>reimbusement</em>, <em>corporative_card</em>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>corporative_card_id_in:</strong></td>
+          <td>
+            <strong>array of integers</strong><br>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -615,6 +631,20 @@ title: 'Expenses'
           <td><strong>location:</strong></td>
           <td><strong>string</strong></td>
         </tr>
+        <tr>
+          <td><strong>liquidation_through:</strong></td>
+          <td>
+            <strong>string</strong> <em>required</em><br>
+            accepted values: <em>advancement</em>, <em>reimbursement</em> or <em>corporative_card</em>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>corporative_card_id:</strong></td>
+          <td>
+            <strong>integer</strong> <em>optional</em><br>
+            required only when <strong>liquidation_through</strong> is <em>corporative_card</em>
+          </td>
+        </tr>
       </tbody>
     </table>
 
@@ -766,6 +796,17 @@ title: 'Expenses'
         <tr>
           <td><strong>location:</strong></td>
           <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>liquidation_through:</strong></td>
+          <td>
+            <strong>string</strong><br>
+            accepted values: <em>advancement</em>, <em>reimbursement</em> or <em>corporative_card</em>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>corporative_card_id:</strong></td>
+          <td><strong>string</strong> <em>optional</em> (only when liquidation_through is corporative_card)</td>
         </tr>
       </tbody>
     </table>
