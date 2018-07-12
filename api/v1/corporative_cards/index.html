@@ -19,7 +19,7 @@ title: 'Corporative cards'
         </tr>
         <tr>
           <td><strong>flag:</strong></td>
-          <td><strong>string</strong></td>
+          <td><strong>JSON object</strong></td>
         </tr>
         <tr>
           <td><strong>number:</strong></td>
@@ -67,7 +67,10 @@ title: 'Corporative cards'
       "id": 1,
       "name": "Credit card",
       "number": "************1234",
-      "flag": "mastercard",
+      "flag": {
+        name: "mastercard",
+        image_url: 'https://...',
+      },
       "expiration_date": "05/19",
       "expiration_month": 5,
       "expiration_year": 2019
