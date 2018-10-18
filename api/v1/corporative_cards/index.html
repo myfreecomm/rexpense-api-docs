@@ -1,0 +1,468 @@
+---
+layout: default
+title: 'Corporative cards'
+---
+<article id="section_explanation">
+  <section class="description">
+    <h2><a name="expenses" href="#expenses">Corporative cards</a></h2>
+    <p>This section describes the API of the corporative card resource.</p>
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>flag:</strong></td>
+          <td><strong>JSON object</strong></td>
+        </tr>
+        <tr>
+          <td><strong>number:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>expiration_date:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>expiration_month:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>expiration_year:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>active:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>user:</strong></td>
+          <td><strong>JSON object</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>organization:</strong></td>
+          <td><strong>JSON object</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>_links:</strong></td>
+          <td>
+            <strong>array of object</strong><br />
+            array of links of the corporative card
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Example of Corporative card</h4>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      "name": "Credit card",
+      "number": "************1234",
+      "flag": {
+        name: "mastercard",
+        image_url: 'https://...',
+      },
+      "expiration_date": "05/19",
+      "expiration_month": 5,
+      "expiration_year": 2019
+      "active": true,
+      "organization": {
+        "id": 1,
+        "name": "Company Inc.",
+        "type": "Organization",
+        "logo": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/original/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/medium/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/thumb/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/organization_logo/1/tiny/logo.png",
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "user": {
+        "id": 1,
+        "name": "John",
+        "type": "User",
+        "avatar": [
+          {
+            "style": "original",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/original/avatar.png",
+            "width": 716,
+            "height": 655,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "medium",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/medium/avatar.png",
+            "width": 300,
+            "height": 300,
+            "expiration": "2014-06-27T20:31:43Z"
+          },
+          {
+            "style": "thumb",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/thumb/avatar.png",
+            "width": 100,
+            "height": 100,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+          {
+            "style": "tiny",
+            "url": "https://rexpense-uploads.s3.amazonaws.com/user_avatar/1/tiny/avatar.png",
+            "width": 48,
+            "height": 48,
+            "expiration": "2014-06-27T20:31:43Z"
+          }
+        ]
+      },
+      "created_at": "2018-06-04T14:17:56Z",
+      "updated_at": "2018-06-04T14:17:56Z",
+      "_links": [
+        {
+          "rel": "self",
+          "method": "GET",
+          "href": "https://app.rexpense.com/api/v1/corporative_cards/1"
+        },
+        {
+          "rel": "update",
+          "method": "PUT",
+          "href": "https://app.rexpense.com/api/v1/corporative_cards/1"
+        },
+        {
+          "rel": "partial_update",
+          "method": "PATCH",
+          "href": "https://app.rexpense.com/api/v1/corporative_cards/1"
+        },
+        {
+          "rel": "destroy",
+          "method": "DELETE",
+          "href": "https://app.rexpense.com/api/v1/corporative_cards/1"
+        }
+      ]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="index">
+  <section class="description">
+    <h3><a name="index" href="#index">List all corporative cards of the user</a></h3>
+    <p>Retrieve all corporative cards that the authenticated user have. It will return a <code>JSON</code> containing the name of the resource
+      with an array of the objects requested and informations like the total of objects, current page and total pages. The fields of the corporative cards can be
+      found in the <a href="{{ site.baseurl }}/api/v1/corporative_cards/#corporative_cards">Corporative card section</a>.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>page:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>per_page:</strong></td>
+          <td><strong>integer</strong> <em>limit to 100</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/corporative_cards</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/corporative_cards \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "corporative_cards": [{ "id": 1, ... }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="filtering">
+  <section class="description">
+    <h3><a name="index" href="#index">Filtering corporative cards</a></h3>
+    <p>You can filter the list of retrieved corporative cards.</p>
+
+    <h4>Parameters</h4>
+    <p>All parameters must be nested a <code>q</code> parameter.</p>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id_in:</strong></td>
+          <td><strong>array of integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>name_cont:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>flag_cont:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>organization_id_in:</strong></td>
+          <td><strong>array of integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>active_eq:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td><strong>created_at_lteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>updated_at_gteq:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h5>
+    <pre>GET https://app.rexpense.com/api/v1/corporative_cards</pre>
+    <h4>Request example</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/corporative_cards \
+      -H 'Accept: application/json' \
+      -H 'Content-type: application/json' \
+      -d '{"q": {"id": [1]}}'</pre>
+    <h4>Response Example</h4>
+    {% highlight javascript %}
+    {
+      "count": 1,
+      "current_page": 1,
+      "total_pages": 1,
+      "corporative_cards": [{ "id": 1 }]
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="show">
+  <section class="description">
+    <h3><a name="create" href="#show">Show a corporative card</a></h3>
+    <p>This request shows the corporative card complete information.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>id:</strong></td>
+          <td><strong>integer</strong> <em>required</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>GET https://app.rexpense.com/api/v1/corporative_cards/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/corporative_cards/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 404 Record Not Found</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "Record Not Found"
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="create">
+  <section class="description">
+    <h3><a name="create" href="#create">Create a corporative card</a></h3>
+    <p>This request creates a new corporative card.</p>
+
+    <h4>Important:</h4>
+    <ul>
+      <li>The authenticated user must belong to an organization to create a new corporative card.</li>
+      <li>A corporative card must be attached to an organization.</li>
+    </ul>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>number:</strong></td>
+          <td><strong>string</strong></td>
+        </tr>
+        <tr>
+          <td><strong>expiration_date:</strong></td>
+          <td><strong>string</strong> <em>MM/YY format</em></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>organization_id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>user_id:</strong></td>
+          <td><strong>integer</strong></td>
+        </tr>
+        <tr>
+          <td><strong>active:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>POST https://app.rexpense.com/api/v1/corporative_cards</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X POST https://app.rexpense.com/api/v1/corporative_cards \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"name": "Credit card", "number": "1234567890123456", "organization_id": 1, ... }'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 201 CREATED</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "name": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="update">
+  <section class="description">
+    <h3><a name="update" href="#update">Update a corporative card</a></h3>
+    <p>There are two ways to update a corporative card: partially or fully. If you'd like to change just one or
+    a few attributes, you have to use the HTTP method <code>PATCH</code>. If you use the HTTP method <code>PUT</code>, you'll have to
+    pass all attributes of the corporative card. This behaviour is the same for all resources in the Rexpense API.</p>
+
+    <h4>Parameters</h4>
+    <table class="parameters">
+      <tbody>
+        <tr>
+          <td><strong>name:</strong></td>
+          <td><strong>string</strong><em> required</em></td>
+        </tr>
+        <tr>
+          <td><strong>expiration_date:</strong></td>
+          <td><strong>string</strong><em> MM/YY format</em></td>
+        </tr>
+        <tr>
+          <td><strong>active:</strong></td>
+          <td><strong>boolean</strong></td>
+        </tr>
+        <tr>
+          <td valign="top"><strong>organization_id:</strong></td>
+          <td><strong>integer</strong><em> required</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>PUT/PATCH https://app.rexpense.com/api/v1/corporative_cards/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X PATCH https://app.rexpense.com/api/v1/corporative_cards/:id \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json' \
+        -d '{"name": "John John"}'</pre>
+    <h4>Response Example Success</h4>
+    <pre>HTTP 200 OK</pre>
+    {% highlight javascript %}
+    {
+      "id": 1,
+      ...
+    }
+    {% endhighlight %}
+    <h4>Response Example Failure</h4>
+    <pre>HTTP 422 Unprocessable Entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "name": ["can't be blank"]
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
+
+<article id="destroy">
+  <section class="description">
+    <h3><a name="destroy" href="#destroy">Destroy a corporative card</a></h3>
+    <p>To destroy a corporative card it has to have no expense attached to it.</p>
+  </section>
+
+  <section class="code">
+    <h4>Definition</h4>
+    <pre>DELETE https://app.rexpense.com/api/v1/corporative_cards/:id</pre>
+    <h4>Example Request</h4>
+    <pre>$ curl -u $YOUR_API_TOKEN:X -X DELETE https://app.rexpense.com/api/v1/corporative_cards/1 \
+        -H 'Accept: application/json' \
+        -H 'Content-type: application/json'
+      </pre>
+    <h4>Response Example</h4>
+    <pre>HTTP 204 NO CONTENT</pre>
+    <h4>Example Response Failure when corporative card has expenses attached to it</h4>
+    <pre>HTTP 422 Unprocessable entity</pre>
+    {% highlight javascript %}
+    {
+      "errors": {
+        "message": "There are expenses attached to the corporative card."
+      }
+    }
+    {% endhighlight %}
+  </section>
+</article>
