@@ -186,30 +186,6 @@ title: "Pre-Expenses"
   </section>
 </article>
 
-<article id="show">
-  <section class="description">
-    <h3><a href="#show" name="#show">Show pre-expense</a></h3>
-    <p>Returns the detailed information of a pre-expense.</p>
-  </section>
-
-  <section class="code">
-    <h4>Definition</h4>
-    <pre>GET https://app.rexpense.com/api/v1/pre_expenses/:id</pre>
-    <h4>Example Request</h4>
-    <pre>$ curl -u $YOUR_API_TOKEN:X -X GET https://app.rexpense.com/api/v1/pre_expenses/1 \
-       -H 'Accept: application/json' \
-       -H 'Content-type: application/json'</pre>
-    <h4>Response Example</h4>
-    <pre>HTTP 200 OK</pre>
-    {% highlight javascript %}
-    {
-      "id": 1,
-      ...
-    }
-    {% endhighlight %}
-  </section>
-</article>
-
 <article id="ignore">
   <section class="description">
     <h3><a href="#ignore" name="#ignore">Ignore a Pre-Expense</a></h3>
@@ -276,14 +252,8 @@ title: "Pre-Expenses"
           <td><strong>string</strong></td>
         </tr>
         <tr>
-          <td valign="top"><strong>payer:</strong></td>
-          <td>
-            <strong>payer object attributes</strong> <em>required</em>
-            <div class="nested">
-              <strong>id:</strong> integer<br />
-              <strong>type:</strong> string
-            </div>
-          </td>
+          <td><strong>payer_id:</strong></td>
+          <td><strong>integer</strong> <em>required</em></td>
         </tr>
         <tr>
           <td><strong>amount:</strong></td>
