@@ -61,6 +61,10 @@ title: 'Expenses'
           </td>
         </tr>
         <tr>
+          <td><strong>track:</strong></td>
+          <td><strong>JSON object</strong></td>
+        </tr>
+        <tr>
           <td><strong>amount:</strong></td>
           <td><strong>float</strong></td>
         </tr>
@@ -184,6 +188,10 @@ title: 'Expenses'
             String format "HH:MM"
           </td>
         </tr>
+        <tr>
+          <td><strong>track:</strong></td>
+          <td><strong>JSON object</strong></td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -207,6 +215,14 @@ title: 'Expenses'
       "origin_latitude": -5.8928447 // only when kind is distance,
       "origin_longitude": -35.205913 // only when kind is distance,
       "travel_time": 60, // only when kind is distance
+      "track": { // only when kind is distance
+      	"started_at": "2009-10-17T18:37:26Z",
+    	"finished_at": "2009-10-17T18:57:34Z",
+    	"waypoints": [
+      		{"latitude": 47.644548, "longitude": -122.326897, "timestamp": "2009-10-17T18:37:26Z"},
+      		{"latitude": 47.644548, "longitude": -122.326897, "timestamp": "2009-10-17T18:38:26Z"}
+    	]	
+      }, 
       "status": "awaiting_analysis",
       "occurred_at": "2014-06-01T14:17:56Z",
       "payer": {
